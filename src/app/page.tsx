@@ -1,19 +1,17 @@
 // src/app/page.tsx
-import Link from 'next/link';
+import { HeroCarousel } from "@/components/HeroCarousel";
 
 export default function HomePage() {
   return (
-    <div className="relative min-h-[70vh] flex items-center justify-center text-center p-4">
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/images/aquarium-banner.jpg')" }}>
-        <div className="absolute inset-0 bg-black/60"></div>
+    <>
+      <HeroCarousel />
+      {/* You can add more homepage content below the carousel here */}
+      <div className="container mx-auto text-center py-16 px-4">
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Welcome to Lumi Aquarium</h2>
+        <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300">
+          Your source for vibrant, healthy, and ethically raised aquatic life. Explore our collection and find the perfect addition to your underwater world.
+        </p>
       </div>
-      <div className="relative text-white">
-        <h1 className="text-5xl md:text-6xl font-bold leading-tight">Welcome to Lumi Aquarium</h1>
-        <p className="text-xl mt-4 font-light">Discover the Vibrant Life Below the Surface.</p>
-        <Link href="/products" className="mt-8 inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full uppercase tracking-wider transition-all">
-          View Our Species
-        </Link>
-      </div>
-    </div>
+    </>
   );
 }
