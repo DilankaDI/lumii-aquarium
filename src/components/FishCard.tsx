@@ -9,7 +9,7 @@ export const FishCard = ({ fish }: { fish: Fish }) => {
     return (
         <Link href={`/species/${fish.slug}`} className="group block">
             <motion.div
-                className="overflow-hidden rounded-xl bg-white dark:bg-dark-mode-surface border border-neutral-200 dark:border-gray-700"
+               className="overflow-hidden rounded-xl bg-white dark:bg-dark-surface border border-neutral-200 dark:border-gray-700"
                 whileHover={{ y: -10, boxShadow: '0px 15px 25px -5px rgba(0, 0, 0, 0.1), 0px 10px 10px -5px rgba(0, 0, 0, 0.04)' }}
                 
                 // This is the updated transition for a slower, smoother effect

@@ -9,7 +9,8 @@ const Header = () => {
   const handleLinkClick = () => setIsMenuOpen(false);
 
   return (
-<header className="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-neutral-200 dark:bg-dark-mode-surface/90 dark:border-gray-800">      <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
+<header className="sticky top-0 z-50 bg-white dark:bg-dark-bg border-b border-neutral-200 dark:border-gray-800">
+<nav className="container mx-auto px-4 py-4 flex justify-between items-center">
 <Link href="/" className="text-2xl font-bold text-gray-800 dark:text-white hover:text-primary transition-colors">          Lumi Aquarium
         </Link>
         <div className="hidden md:flex items-center space-x-6">

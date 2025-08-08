@@ -16,7 +16,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${poppins.className} bg-white dark:bg-dark-mode-background text-gray-800 dark:text-gray-200 transition-colors duration-300`}>
+            <body className={`${poppins.className} bg-white dark:bg-dark-bg text-gray-800 dark:text-dark-text transition-colors duration-300`}>                
+                <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
                     <Header />
                     <main>
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     </main>
                     {/* You can add a Footer component here later */}
                 </ThemeProvider>
+                </div>
             </body>
         </html>
     );
