@@ -9,8 +9,7 @@ export const FishCard = ({ fish }: { fish: Fish }) => {
     return (
         <Link href={`/species/${fish.slug}`} className="group block">
             <motion.div
-                className="overflow-hidden rounded-xl bg-white dark:bg-gray-800 border border-neutral-200 dark:border-gray-700"
-                whileHover={{ y: -8, boxShadow: '0px 10px 20px rgba(0,0,0,0.1)' }}
+className="overflow-hidden rounded-xl bg-white dark:bg-dark-mode-surface border border-neutral-200 dark:border-gray-700"                whileHover={{ y: -8, boxShadow: '0px 10px 20px rgba(0,0,0,0.1)' }}
                 transition={{ type: 'spring', stiffness: 300 }}
             >
                 <div className="overflow-hidden">
@@ -23,10 +22,9 @@ export const FishCard = ({ fish }: { fish: Fish }) => {
                     />
                 </div>
                 <div className="p-5">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">
-                        {fish.name}
+<h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary dark:group-hover:text-dark-mode-primary-text transition-colors">                        {fish.name}
                     </h3>
-                    <p className="mt-1 text-sm text-gray-500 dark:text-gray-400 italic">
+    <p className="mt-1 text-sm text-gray-500 dark:text-dark-mode-muted-text italic">
                         {fish.scientificName}
                     </p>
                 </div>

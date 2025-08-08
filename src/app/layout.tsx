@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${poppins.className} bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300`}>
+            <body className={`${poppins.className} bg-white dark:bg-dark-mode-background text-gray-800 dark:text-gray-200 transition-colors duration-300`}>
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
                     <Header />
                     <main>
