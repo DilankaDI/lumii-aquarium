@@ -105,21 +105,21 @@ const slides = [
     title: "Vibrant & Healthy",
     subtitle: "Clownfish",
     image: "/images/aquarium-banner.jpg",
-    link: "/species/clownfish",
+    link: "/products",
     buttonText: "View Details"
   },
   {
     title: "Stunning Centerpiece",
     subtitle: "Blue Tang",
     image: "/images/aquarium-banner2.png",
-    link: "/species/blue-tang",
+    link: "/products",
     buttonText: "View Details"
   },
   {
     title: "Our Commitment to",
     subtitle: "Quality",
     image: "/images/aquarium-banner.jpg",
-    link: "/farm",
+    link: "/products",
     buttonText: "Learn More"
   },
 ];
