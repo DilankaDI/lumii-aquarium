@@ -3,9 +3,11 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { ThemeToggle } from './ThemeToggle';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
   const handleLinkClick = () => setIsMenuOpen(false);
 
   return (
@@ -14,13 +16,43 @@ const Header = () => {
 <Link href="/" className="text-2xl font-bold text-gray-800 dark:text-white hover:text-primary transition-colors">          Lumi Aquarium
         </Link>
         <div className="hidden md:flex items-center space-x-6">
-          <Link href="/" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 font-medium">Home</Link>
-          <Link href="/products" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 font-medium">Products</Link>
-          <Link href="/farm" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 font-medium">Our Farm</Link>
-          <Link href="/about" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 font-medium">About</Link>
-          <Link href="/contact" className="bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-blue-700 transition">Contact</Link>
-          <ThemeToggle />
-        </div>
+  <Link
+    href="/"
+    className="text-white hover:text-primary-light font-medium data-[active=true]:text-primary"
+    data-active={pathname === '/'}
+  >
+    Home
+  </Link>
+  <Link
+    href="/products"
+    className="text-white hover:text-primary-light font-medium data-[active=true]:text-primary"
+    data-active={pathname === '/products'}
+  >
+    Products
+  </Link>
+  <Link
+    href="/farm"
+    className="text-white hover:text-primary-light font-medium data-[active=true]:text-primary"
+    data-active={pathname === '/farm'}
+  >
+    Our Farm
+  </Link>
+  <Link
+    href="/about"
+    className="text-white hover:text-primary-light font-medium data-[active=true]:text-primary"
+    data-active={pathname === '/about'}
+  >
+    About
+  </Link>
+  <Link
+    href="/contact"
+    className="bg-primary text-white font-semibold px-4 py-2 rounded-lg hover:bg-primary-dark transition"
+  >
+    Contact
+  </Link>
+  <ThemeToggle />
+</div>
+
         <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-gray-800 dark:text-gray-300 focus:outline-none" aria-label="Toggle menu">
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {isMenuOpen ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />}

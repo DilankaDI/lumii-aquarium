@@ -16,7 +16,7 @@ const AboutUsPage = () => {
             </p>
           </div>
           <Image
-            src="https://placehold.co/600x400/181820/E2E8F0?text=Company+Team"
+            src="/images/sample-2.jpg"
             alt="Company Team"
             width={600}
             height={400}
@@ -29,7 +29,7 @@ const AboutUsPage = () => {
         <section className="flex flex-col-reverse lg:flex-row items-center gap-8 border-b border-gray-700 pb-12">
           <div className="flex-1">
             <Image
-              src="https://placehold.co/600x400/181820/E2E8F0?text=Our+Mission"
+              src="/images/sample-2.jpg"
               alt="Our Mission"
               width={600}
               height={400}
@@ -60,7 +60,7 @@ const AboutUsPage = () => {
           </div>
           <div className="flex-1">
             <Image
-              src="https://placehold.co/600x400/181820/E2E8F0?text=Our+Story"
+              src="/images/sample-2.jpg"
               alt="Our Story"
               width={600}
               height={400}

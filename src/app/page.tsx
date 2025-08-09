@@ -1,12 +1,13 @@
 // src/app/page.tsx
 import { HeroCarousel } from "@/components/HeroCarousel";
+import { QuickLinks } from "@/components/QuickLinks";
 import { PromoSection } from "@/components/PromoSection";
 
 export default function HomePage() {
   return (
     <>
       <HeroCarousel />
-      <br></br>
+      <QuickLinks />
       <PromoSection />
       {/* You can add more homepage content below the carousel here */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

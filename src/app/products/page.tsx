@@ -15,7 +15,7 @@ const products: Product[] = [
   {
     name: "Neon Tetra",
     price: 5,
-    image: "https://placehold.co/400x400/3A3A40/F5F5F5?text=Neon+Tetra",
+    image: "/images/sample-5.jpeg",
     description:
       "Small, colorful freshwater fish known for their bright neon blue and red stripes. Perfect for community tanks.",
     details: "Peaceful schooling fish, prefers groups of 6 or more, ideal for beginner aquarists.",
@@ -23,7 +23,7 @@ const products: Product[] = [
   {
     name: "Betta Fish",
     price: 15,
-    image: "https://placehold.co/400x400/3A3A40/F5F5F5?text=Betta+Fish",
+    image: "/images/sample-5.jpeg",
     description:
       "Vibrant, solitary fish with flowing fins. Known for their aggressive behavior towards other males.",
     details: "Can live in smaller tanks, requires warm water (76-82°F), needs frequent feeding.",
@@ -31,7 +31,7 @@ const products: Product[] = [
   {
     name: "Guppy",
     price: 3,
-    image: "https://placehold.co/400x400/3A3A40/F5F5F5?text=Guppy",
+    image: "/images/sample-5.jpeg",
     description:
       "Small, lively fish with colorful patterns. Very easy to care for and breed.",
     details: "Hardy fish, prefers planted tanks, thrives in a wide range of water conditions.",
@@ -39,7 +39,7 @@ const products: Product[] = [
   {
     name: "Angelfish",
     price: 25,
-    image: "https://placehold.co/400x400/3A3A40/F5F5F5?text=Angelfish",
+    image: "/images/sample-5.jpeg",
     description:
       "Elegant freshwater fish with triangular fins and graceful movements. Needs a spacious tank.",
     details: "Semi-aggressive, requires tall tanks, prefers stable water conditions.",
@@ -47,7 +47,7 @@ const products: Product[] = [
   {
     name: "Corydoras Catfish",
     price: 10,
-    image: "https://placehold.co/400x400/3A3A40/F5F5F5?text=Corydoras+Catfish",
+    image: "/images/sample-5.jpeg",
     description:
       "Small bottom-dwelling fish that helps keep the tank clean by scavenging leftover food.",
     details: "Peaceful and social, prefers groups, compatible with many community fish.",
@@ -55,7 +55,7 @@ const products: Product[] = [
   {
     name: "Discus",
     price: 50,
-    image: "https://placehold.co/400x400/3A3A40/F5F5F5?text=Discus",
+    image: "/images/sample-5.jpeg",
     description:
       "Brightly colored, round-bodied fish that is considered one of the most beautiful freshwater species.",
     details: "Requires excellent water quality, peaceful, needs large tanks and stable temperature.",
@@ -63,7 +63,7 @@ const products: Product[] = [
   {
     name: "Swordtail",
     price: 8,
-    image: "https://placehold.co/400x400/3A3A40/F5F5F5?text=Swordtail",
+    image: "/images/sample-5.jpeg",
     description:
       "Active and hardy fish with a distinctive sword-shaped tail fin. Easy to breed and care for.",
     details: "Good for beginners, prefers planted tanks, peaceful with other fish.",
@@ -71,7 +71,7 @@ const products: Product[] = [
   {
     name: "Zebra Danio",
     price: 4,
-    image: "https://placehold.co/400x400/3A3A40/F5F5F5?text=Zebra+Danio",
+    image: "/images/sample-5.jpeg",
     description:
       "Small, striped fish known for being very active and hardy, perfect for community tanks.",
     details: "Schooling fish, very tolerant to a wide range of conditions, great for beginners.",

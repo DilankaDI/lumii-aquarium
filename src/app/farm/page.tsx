@@ -13,7 +13,7 @@ const OurFarmsPage = () => {
             Our commitment to sustainable aquaculture ensures the health and well-being of our species, from fry to full growth.
           </p>
           <Image
-            src="https://placehold.co/1200x600/181820/E2E8F0?text=Aquatic+Farming+Facility"
+            src="/images/sample-8.jpeg"
             alt="Aquatic Farming Facility"
             width={1200}
             height={600}
@@ -34,7 +34,7 @@ const OurFarmsPage = () => {
           </div>
           <div className="lg:w-1/2">
             <Image
-              src="https://placehold.co/600x400/181820/E2E8F0?text=Our+Story"
+              src="/images/catfish.jpg"
               alt="Our Story"
               width={600}
               height={400}
@@ -51,7 +51,7 @@ const OurFarmsPage = () => {
           <div className="flex flex-col lg:flex-row items-center gap-8 mb-16">
             <div className="lg:w-1/2">
               <Image
-                src="https://placehold.co/800x600/3A3A40/F5F5F5?text=Willow+Creek+Farm"
+                src="/images/catfish.jpg"
                 alt="Willow Creek Farm"
                 width={800}
                 height={600}
@@ -78,7 +78,7 @@ const OurFarmsPage = () => {
             </div>
             <div className="lg:w-1/2">
               <Image
-                src="https://placehold.co/800x600/3A3A40/F5F5F5?text=Coral+Reef+Nursery"
+                src="/images/catfish.jpg"
                 alt="Coral Reef Nursery"
                 width={800}
                 height={600}
@@ -91,7 +91,7 @@ const OurFarmsPage = () => {
           <div className="flex flex-col lg:flex-row items-center gap-8">
             <div className="lg:w-1/2">
               <Image
-                src="https://placehold.co/800x600/3A3A40/F5F5F5?text=Urban+Aquaculture"
+                src="/images/catfish.jpg"
                 alt="Urban Aquaculture Lab"
                 width={800}
                 height={600}
