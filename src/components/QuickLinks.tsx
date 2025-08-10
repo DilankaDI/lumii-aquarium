@@ -1,15 +1,15 @@
-// src/components/QuickLinks.tsx
 "use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaFish, FaInfoCircle, FaEnvelope } from "react-icons/fa";
+import { FaInfoCircle, FaEnvelope } from "react-icons/fa";
+import { GiDolphin } from "react-icons/gi";
 
 const cards = [
   {
     title: "Our Farms",
     description: "See where we raise our fish with care and expertise.",
-    icon: <FaFish className="text-blue-500 text-4xl" />,
+    icon: <GiDolphin className="text-sky-400 text-4xl" />,
     link: "/farm",
   },
   {
