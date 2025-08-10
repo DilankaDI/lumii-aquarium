@@ -5,6 +5,7 @@ import { Poppins } from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import Header from '@/components/Header';
 import { PageTransitionWrapper } from '@/components/PageTransitionWrapper';
+import Footer from '@/components/Footer';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] });
 
@@ -23,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <main>
                         <PageTransitionWrapper>{children}</PageTransitionWrapper>
                     </main>
-                    {/* You can add a Footer component here later */}
+                    <Footer />
                 </ThemeProvider>
                 </div>
             </body>
