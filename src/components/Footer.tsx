@@ -1,3 +1,5 @@
+"use client";
+
 import { MapPin, Phone, Mail, Facebook, Instagram, Music2 } from "lucide-react";
 
 const Footer = () => {

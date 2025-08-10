@@ -1,74 +1,66 @@
 // src/components/Header.tsx
+
+// 1. Make this a Client Component to use hooks
 'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useState } from 'react';
-import { ThemeToggle } from './ThemeToggle';
-import { usePathname } from 'next/navigation';
+import { Phone } from 'lucide-react';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pathname = usePathname();
-  const handleLinkClick = () => setIsMenuOpen(false);
+  // 2. State to track if the page has been scrolled
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // 3. Effect to add and remove a scroll event listener
+  useEffect(() => {
+    const handleScroll = () => {
+      // Set state to true if scrolled more than 10px, false otherwise
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    // Add listener when the component mounts
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup: remove listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   return (
-<header className="sticky top-0 z-50 bg-white dark:bg-dark-bg border-b border-neutral-200 dark:border-gray-800">
-<nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-<Link href="/" className="text-2xl font-bold text-gray-800 dark:text-white hover:text-primary transition-colors">          Lumi Aquarium
+    // 4. Conditionally apply classes for the background and shadow
+    <header
+      className={`
+        fixed top-0 left-0 w-full text-white py-4 px-8 z-50 
+        transition-all duration-300
+        ${isScrolled ? 'bg-[#0D1B2A] shadow-md' : 'bg-transparent shadow-none'}
+      `}
+    >
+      <div className="container mx-auto flex justify-between items-center">
+        {/* Logo */}
+        <Link href="/" className="text-xl font-bold">
+          Lumii Aquarium
         </Link>
-        <div className="hidden md:flex items-center space-x-6">
-  <Link
-    href="/"
-    className="text-white hover:text-primary-light font-medium data-[active=true]:text-primary"
-    data-active={pathname === '/'}
-  >
-    Home
-  </Link>
-  <Link
-    href="/products"
-    className="text-white hover:text-primary-light font-medium data-[active=true]:text-primary"
-    data-active={pathname === '/products'}
-  >
-    Products
-  </Link>
-  <Link
-    href="/farm"
-    className="text-white hover:text-primary-light font-medium data-[active=true]:text-primary"
-    data-active={pathname === '/farm'}
-  >
-    Our Farm
-  </Link>
-  <Link
-    href="/about"
-    className="text-white hover:text-primary-light font-medium data-[active=true]:text-primary"
-    data-active={pathname === '/about'}
-  >
-    About
-  </Link>
-  <Link
-    href="/contact"
-    className="bg-primary text-white font-semibold px-4 py-2 rounded-lg hover:bg-primary-dark transition"
-  >
-    Contact
-  </Link>
-  <ThemeToggle />
-</div>
 
-        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-gray-800 dark:text-gray-300 focus:outline-none" aria-label="Toggle menu">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            {isMenuOpen ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />}
-          </svg>
-        </button>
-      </nav>
-      {isMenuOpen && (
-        <div className="md:hidden px-4 pb-4 space-y-1 bg-white dark:bg-gray-900 border-t border-neutral-200 dark:border-gray-800">
-          <Link href="/" onClick={handleLinkClick} className="block text-gray-700 dark:text-gray-300 hover:text-blue-600 font-medium py-3 px-2 rounded-md">Home</Link>
-          <Link href="/products" onClick={handleLinkClick} className="block text-gray-700 dark:text-gray-300 hover:text-blue-600 font-medium py-3 px-2 rounded-md">Products</Link>
-          <Link href="/farm" onClick={handleLinkClick} className="block text-gray-700 dark:text-gray-300 hover:text-blue-600 font-medium py-3 px-2 rounded-md">Our Farm</Link>
-          <Link href="/about" onClick={handleLinkClick} className="block text-gray-700 dark:text-gray-300 hover:text-blue-600 font-medium py-3 px-2 rounded-md">About</Link>
-          <Link href="/contact" onClick={handleLinkClick} className="block mt-2 bg-blue-600 text-white font-semibold px-4 py-3 rounded-lg hover:bg-blue-700 transition text-center">Contact</Link>
+        {/* Navigation Links */}
+        <nav className="hidden md:flex space-x-6">
+          <Link href="/" className="hover:text-teal-300">Home</Link>
+          <Link href="/about" className="hover:text-teal-300">About Us</Link>
+          <Link href="/farm" className="hover:text-teal-300">Aquarium</Link>
+          {/* <Link href="#" className="hover:text-teal-300">Features</Link> */}
+          <Link href="/products" className="hover:text-teal-300">Gallery</Link>
+          {/* <Link href="#" className="hover:text-teal-300">Blog</Link> */}
+          <Link href="/contact" className="hover:text-teal-300">Contact</Link>
+        </nav>
+
+        {/* Contact Info */}
+        <div className="hidden md:flex items-center space-x-2">
+          <Phone size={20} className="text-teal-300" />
+          <span>(800) 123 4567</span>
         </div>
-      )}
+      </div>
     </header>
   );
 };
+
 export default Header;
