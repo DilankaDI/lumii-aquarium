@@ -127,7 +127,7 @@ const HeroCarousel = () => {
         <SwiperSlide>
           <div className="h-screen">
             <Image
-              src="/images/sample-17.jpg"
+              src="/images/sample-11.jpg"
               alt="Vibrant fish in a well-maintained aquarium"
               fill
               style={{ objectFit: 'cover' }}
