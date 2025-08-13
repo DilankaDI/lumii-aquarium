@@ -87,66 +87,77 @@
 
 // src/components/HeroCarousel.js
 // src/components/HeroCarousel.js
-"use client";
+'use client';
 
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import 'swiper/css';
 import Image from 'next/image';
 
-// --- Import your images directly ---
-// This allows Next.js to determine the width and height automatically
-// and optimize the images at build time.
+const HeroCarousel = () => {
+  return (
+    <div className="absolute top-0 left-0 w-full h-full -z-10">
+      <Swiper
+        modules={[Autoplay]}
+        loop={true}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+        speed={1000}
+        slidesPerView={1}
+      >
+        {/* Slide 1 */}
+        <SwiperSlide>
+          <div className="h-screen">
+            <Image
+              src="/images/sample-8.jpeg"
+              alt="Beautiful aquarium installation"
+              priority
+              fill
+              style={{ objectFit: 'cover' }}
+              sizes="100vw"
+            />
+                    <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
 
-const HeroCarousel = () => (
-  <div className="absolute top-0 left-0 w-full h-full -z-10">
-    <Carousel
-      autoPlay
-      infiniteLoop
-      showThumbs={false}
-      showStatus={false}
-      showIndicators={false}
-      interval={5000}
-      transitionTime={1000}
-      stopOnHover={false}
-      showArrows={false}      
-      className="h-full"
-    >
-      {/* Slide 1 */}
-      <div className="h-screen">
-        <Image
-          src="/images/sample-8.jpeg"
-          alt="Beautiful aquarium installation"
-          priority={true} // The first image should be high priority for LCP
-          fill
-          style={{objectFit:"cover"}}
-          sizes="100vw"
-        />
-      </div>
+          </div>
+        </SwiperSlide>
 
-      {/* Slide 2 */}
-      <div className="h-screen">
-        <Image
-          src="/images/sample-10.jpg"
-          alt="Vibrant fish in a well-maintained aquarium"
-          fill
-          style={{objectFit:"cover"}}
-          sizes="100vw"
-        />
-      </div>
+        {/* Slide 2 */}
+        <SwiperSlide>
+          <div className="h-screen">
+            <Image
+              src="/images/sample-17.jpg"
+              alt="Vibrant fish in a well-maintained aquarium"
+              fill
+              style={{ objectFit: 'cover' }}
+              sizes="100vw"
+            />
+                    <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
 
-      {/* Slide 3 */}
-      <div className="h-screen">
-        <Image
-          src="/images/sample-11.jpg"
-          alt="A clean and healthy aquarium ecosystem"
-          fill
-          style={{objectFit:"cover"}}
-          sizes="100vw"
-        />
-      </div>
-    </Carousel>
-    <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
-  </div>
-);
+          </div>
+        </SwiperSlide>
+
+        {/* Slide 3 */}
+        <SwiperSlide>
+          <div className="h-screen">
+            <Image
+              src="/images/sample-15.jpeg"
+              alt="A clean and healthy aquarium ecosystem"
+              fill
+              style={{ objectFit: 'cover' }}
+              sizes="100vw"
+            />
+        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+            
+          </div>
+        </SwiperSlide>
+      </Swiper>
+
+      {/* Dark overlay */}
+      
+    </div>
+  );
+};
 
 export default HeroCarousel;
