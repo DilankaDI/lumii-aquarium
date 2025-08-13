@@ -153,21 +153,21 @@ const HomePage = () => {
         <main>
           {/* Hero Section */}
           <section className="h-screen w-full hero-bg flex items-center">
-            <HeroCarousel /> {/* Add the carousel component here */}
-            <div className="container mx-auto px-6 relative z-10"> {/* Add z-index to keep text on top */}
+            <HeroCarousel /> 
+            <div className="container mx-auto px-6 relative z-10"> 
               <div className="text-left text-white max-w-2xl">
                 <h1 className="text-5xl md:text-7xl font-bold leading-tight">
                   Aquarium Installation and Maintenance
                 </h1>
                 <p className="mt-4 text-xl md:text-2xl text-gray-200">
                   Fastest and easiest way to cycle your new aquarium.
-                </p>
+                 </p>
                 <a
                   href="#"
                   className="mt-8 inline-block bg-cyan-500 text-white font-bold py-4 px-10 rounded hover:bg-cyan-600 transition-colors duration-300"
                 >
                   CONTACT US TODAY!
-                </a>
+               </a>
               </div>
             </div>
           </section>
