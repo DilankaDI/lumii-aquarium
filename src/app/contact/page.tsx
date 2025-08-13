@@ -19,9 +19,9 @@ const ContactUsPage: React.FC = () => {
         </div>
 
         <div className="bg-[#181820] p-8 rounded-xl shadow-2xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
-            <div className="p-8 rounded-xl">
+            <div className="rounded-xl">
               <Image
                 src="/images/sample-10.jpg"
                 alt="Aquatic Farming Facility"

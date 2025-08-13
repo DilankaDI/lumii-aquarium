@@ -108,6 +108,7 @@ const HeroCarousel = () => (
       interval={5000}
       transitionTime={1000}
       stopOnHover={false}
+      showArrows={false}      
       className="h-full"
     >
       {/* Slide 1 */}
