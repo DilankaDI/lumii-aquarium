@@ -152,9 +152,8 @@ import { FishModal } from '@/components/FishModal'; // <-- Import the modal comp
 
 const categories = [
   { id: 'all', name: 'All Species' },
-  { id: 'beginner', name: 'Beginner’s Picks' },
-  { id: 'centerpiece', name: 'Centerpiece Fish' },
-  { id: 'community', name: 'Community Fish' },
+  { id: 'Vibrant Colors', name: 'Vibrant Colors' },
+  { id: 'Patterned Fish', name: 'Patterned Fish' },
 ];
 
 const ITEMS_PER_PAGE = 6;

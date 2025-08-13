@@ -7,7 +7,7 @@ export type Fish = {
   id: number;
   name: string;
   primaryImage: string;
-  category: 'Vibrant Colors' | 'centerpiece' | 'community';
+  category: 'Vibrant Colors' | 'Patterned Fish';
   species: string;
   description: string;
 };
@@ -28,7 +28,7 @@ export const fishData: Fish[] = [
     id: 2,
     name: 'Betta Fish',
     primaryImage: '/images/gallery/sample-12.jpg',
-    category: 'centerpiece',
+    category: 'Patterned Fish',
     species: 'fish',
     description: 'A popular choice for beginners, goldfish are hardy and come in many varieties.'
   },
@@ -36,7 +36,7 @@ export const fishData: Fish[] = [
     id: 3,
     name: 'Neon Tetra',
     primaryImage: '/images/gallery/sample-7.jpeg',
-    category: 'community',
+    category: 'Vibrant Colors',
     species: 'fish',
     description: 'A popular choice for beginners, goldfish are hardy and come in many varieties.'
   },
@@ -52,7 +52,7 @@ export const fishData: Fish[] = [
     id: 5,
     name: 'Angelfish',
     primaryImage: '/images/gallery/sample-4.jpeg',
-    category: 'centerpiece',
+    category: 'Patterned Fish',
     species: 'fish',
     description: 'A popular choice for beginners, goldfish are hardy and come in many varieties.'
   },
@@ -60,7 +60,23 @@ export const fishData: Fish[] = [
     id: 6,
     name: 'Molly Fish',
     primaryImage: '/images/gallery/sample-3.jpeg',
-    category: 'community',
+    category: 'Patterned Fish',
+    species: 'fish',
+    description: 'A popular choice for beginners, goldfish are hardy and come in many varieties.'
+  },
+    {
+    id: 7,
+    name: 'Molly Fish',
+    primaryImage: '/images/gallery/sample-3.jpeg',
+    category: 'Patterned Fish',
+    species: 'fish',
+    description: 'A popular choice for beginners, goldfish are hardy and come in many varieties.'
+  },
+    {
+    id: 8,
+    name: 'Molly Fish',
+    primaryImage: '/images/gallery/sample-7.jpeg',
+    category: 'Patterned Fish',
     species: 'fish',
     description: 'A popular choice for beginners, goldfish are hardy and come in many varieties.'
   },

@@ -7,12 +7,15 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, Menu, X } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
   // 2. State to track if the page has been scrolled
   const [isScrolled, setIsScrolled] = useState(false);
   // 3. State to track if the mobile menu is open
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+    // Get the current pathname
+  const pathname = usePathname();
 
   // 4. Effect to handle the scroll event
   useEffect(() => {
@@ -48,7 +51,7 @@ const Header = () => {
   const navLinks = [
     { href: '/', text: 'Home' },
     { href: '/about', text: 'About Us' },
-    { href: '/farm', text: 'Aquarium' },
+    // { href: '/farm', text: 'Aquarium' },
     { href: '/products', text: 'Our Collection' },
     { href: '/contact', text: 'Contact' },
   ];
@@ -79,11 +82,20 @@ const Header = () => {
 
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex space-x-6 items-center">
-            {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="hover:text-teal-300 transition-colors">
-                {link.text}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`transition-colors ${
+                    isActive ? 'text-teal-300' : 'hover:text-teal-300'
+                  }`}
+                >
+                  {link.text}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Desktop Contact Info */}

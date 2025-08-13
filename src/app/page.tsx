@@ -134,6 +134,7 @@
 
 import { useState, useEffect } from 'react';
 import Header from '@/components/Header'; // Import the new Header component
+import HeroCarousel from '@/components/HeroCarousel'; 
 
 
 // Main Page Component
@@ -152,7 +153,8 @@ const HomePage = () => {
         <main>
           {/* Hero Section */}
           <section className="h-screen w-full hero-bg flex items-center">
-            <div className="container mx-auto px-6">
+            <HeroCarousel /> {/* Add the carousel component here */}
+            <div className="container mx-auto px-6 relative z-10"> {/* Add z-index to keep text on top */}
               <div className="text-left text-white max-w-2xl">
                 <h1 className="text-5xl md:text-7xl font-bold leading-tight">
                   Aquarium Installation and Maintenance
