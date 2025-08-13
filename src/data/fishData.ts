@@ -1,31 +1,41 @@
 // src/data/fishData.ts
 
-// Defining a "type" gives us better autocompletion and error checking
-export type Fish = {
-  id: number;
-  name: string;
-  scientificName: string;
-  slug: string; // A URL-friendly version of the name
-  primaryImage: string; // Path to the main image
-  description: string;
-};
-
-export const fishData: Fish[] = [
+export const fishData = [
   {
     id: 1,
-    name: 'Clownfish',
-    scientificName: 'Amphiprioninae',
-    slug: 'clownfish',
-    primaryImage: '/images/clownfish.jpeg', // Root-relative path to images in `public`
-    description: 'Clownfish are known for their bright orange color and their symbiotic relationship with sea anemones. They are hardy and popular among both new and experienced aquarists.',
+    name: 'Goldfish',
+    primaryImage: '/images/gallery/sample-13.jpg',
+    category: 'beginner'
   },
   {
     id: 2,
-    name: 'Blue Tang',
-    scientificName: 'Paracanthurus hepatus',
-    slug: 'blue-tang',
-    primaryImage: '/images/blue-tang.jpeg',
-    description: 'The Blue Tang is a species of surgeonfish recognized by its vibrant blue body. It requires a large tank with plenty of swimming space and places to hide.',
+    name: 'Betta Fish',
+    primaryImage: '/images/gallery/sample-12.jpg',
+    category: 'centerpiece'
   },
-  // ... Add all 50 of your fish species here
+  {
+    id: 3,
+    name: 'Neon Tetra',
+    primaryImage: '/images/gallery/sample-7.jpeg',
+    category: 'community'
+  },
+  {
+    id: 4,
+    name: 'Guppy',
+    primaryImage: '/images/gallery/sample-6.jpeg',
+    category: 'beginner'
+  },
+  {
+    id: 5,
+    name: 'Angelfish',
+    primaryImage: '/images/gallery/sample-4.jpeg',
+    category: 'centerpiece'
+  },
+  {
+    id: 6,
+    name: 'Molly Fish',
+    primaryImage: '/images/gallery/sample-3.jpeg',
+    category: 'community'
+  },
+  // add more as needed, keeping absolute paths starting with `/`
 ];
