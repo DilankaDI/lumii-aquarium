@@ -1,6 +1,19 @@
 // src/data/fishData.ts
 
-export const fishData = [
+// 1. Define and Export the 'Fish' Type
+// This is what your FishCard.tsx component is missing. It describes the
+// "shape" of a single fish object for TypeScript.
+export type Fish = {
+  id: number;
+  name: string;
+  primaryImage: string;
+  category: 'beginner' | 'centerpiece' | 'community';
+};
+
+// 2. Your Existing Data Array
+// By adding ': Fish[]', we tell TypeScript that this is an array of 'Fish' objects.
+// This is good practice as it will show an error if an object doesn't match the type.
+export const fishData: Fish[] = [
   {
     id: 1,
     name: 'Goldfish',
