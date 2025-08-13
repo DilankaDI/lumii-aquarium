@@ -6,7 +6,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, Menu, X } from 'lucide-react';
+import { Mail, Menu, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
 const Header = () => {
@@ -100,8 +100,8 @@ const Header = () => {
 
           {/* Desktop Contact Info */}
           <div className="hidden md:flex items-center space-x-2">
-            <Phone size={20} className="text-teal-300" />
-            <span>+94 77 123456</span>
+            <Mail size={20} className="text-teal-300" />
+            <span>lumii.go2@gmail.com</span>
           </div>
 
           {/* Mobile Menu Button */}
@@ -136,8 +136,8 @@ const Header = () => {
             ))}
           </nav>
           <div className="flex items-center space-x-2 text-lg">
-            <Phone size={24} className="text-teal-300" />
-            <span>+94 77 123456</span>
+            <Mail size={24} className="text-teal-300" />
+            <span>lumii.go2@gmail.com</span>
           </div>
         </div>
       </div>

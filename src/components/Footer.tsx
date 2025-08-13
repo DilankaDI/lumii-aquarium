@@ -45,9 +45,6 @@ const Footer = () => {
               Contact
             </Link>
           </div>
-          <p className="text-sm mt-4">
-            &copy; {new Date().getFullYear()} Lumii Aquarium. All rights reserved.
-          </p>
         </div>
 
         {/* Middle Section - Contact Information */}
@@ -106,6 +103,11 @@ const Footer = () => {
               <Music2 className="w-6 h-6" />
             </a>
           </div>
+        </div>
+        <div>
+          <p className="text-sm mt-4">
+            &copy; {new Date().getFullYear()} Lumii Aquarium. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
