@@ -3,22 +3,43 @@ import { fishData } from '@/data/fishData';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
-type Props = { params: { slug: string } };
+// We removed the custom "type Props = { ... };"
 
-export async function generateMetadata({ params }: Props) {
+// Instead, we type the props directly in the function signature.
+export async function generateMetadata({ params }: { params: { slug: string } }) {
   const fish = fishData.find(f => f.slug === params.slug);
-  return { title: `${fish?.name || 'Not Found'} | Lumi Aquarium` };
+  
+  // It's good practice to handle the "not found" case for metadata too.
+  if (!fish) {
+    return { title: 'Species Not Found' };
+  }
+
+  return {
+    title: `${fish.name} | Lumi Aquarium`,
+    description: fish.description,
+  };
 }
 
-const SpeciesDetailPage = ({ params }: Props) => {
+// We do the same direct typing for the page component itself.
+const SpeciesDetailPage = ({ params }: { params: { slug:string } }) => {
   const fish = fishData.find(f => f.slug === params.slug);
-  if (!fish) notFound();
+
+  if (!fish) {
+    // This will correctly show the 404 page if the slug is not found.
+    notFound();
+  }
 
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start">
         <div>
-          <Image src={fish.primaryImage} alt={fish.name} width={600} height={600} className="w-full h-full object-cover rounded-lg shadow-lg"/>
+          <Image 
+            src={fish.primaryImage} 
+            alt={fish.name} 
+            width={600} 
+            height={600} 
+            className="w-full h-full object-cover rounded-lg shadow-lg"
+          />
         </div>
         <div className="pt-4">
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">{fish.name}</h1>
@@ -32,4 +53,5 @@ const SpeciesDetailPage = ({ params }: Props) => {
     </div>
   );
 };
+
 export default SpeciesDetailPage;
