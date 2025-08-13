@@ -5,13 +5,16 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Phone } from 'lucide-react';
+import Image from 'next/image';
+import { Phone, Menu, X } from 'lucide-react';
 
 const Header = () => {
   // 2. State to track if the page has been scrolled
   const [isScrolled, setIsScrolled] = useState(false);
+  // 3. State to track if the mobile menu is open
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // 3. Effect to add and remove a scroll event listener
+  // 4. Effect to handle the scroll event
   useEffect(() => {
     const handleScroll = () => {
       // Set state to true if scrolled more than 10px, false otherwise
@@ -27,39 +30,106 @@ const Header = () => {
     };
   }, []); // Empty dependency array ensures this runs only once on mount
 
+  // 5. Effect to lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    // Cleanup function to restore scroll on component unmount
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isMenuOpen]);
+
+
+  const navLinks = [
+    { href: '/', text: 'Home' },
+    { href: '/about', text: 'About Us' },
+    { href: '/farm', text: 'Aquarium' },
+    { href: '/products', text: 'Our Collection' },
+    { href: '/contact', text: 'Contact' },
+  ];
+
   return (
-    // 4. Conditionally apply classes for the background and shadow
-    <header
-      className={`
-        fixed top-0 left-0 w-full text-white py-4 px-8 z-50 
-        transition-all duration-300
-        ${isScrolled ? 'bg-[#0D1B2A] shadow-md' : 'bg-transparent shadow-none'}
-      `}
-    >
-      <div className="container mx-auto flex justify-between items-center">
-        {/* Logo */}
-        <Link href="/" className="text-xl font-bold">
-          Lumii Aquarium
-        </Link>
+    <>
+      {/* 6. Conditionally apply classes for the background and shadow */}
+      <header
+        className={`
+          fixed top-0 left-0 w-full text-white py-4 px-8 z-50 
+          transition-all duration-300
+          ${isScrolled ? 'bg-[#0D1B2A] shadow-lg' : 'bg-[#0D1B2A]/30 shadow-none'}
+        `}
+      >
+        <div className="container mx-auto flex justify-between items-center">
+          {/* Logo */}
+          <Link href="/" onClick={() => setIsMenuOpen(false)}>
+            <Image
+              src="/images/logo.png"
+              alt="Lumii Aquarium Logo"
+              width={30} // Adjust width as needed
+              height={8}  // Adjust height as needed
+              className="object-contain" // Ensures image scales without distortion
+              priority // Prioritize loading the logo as it's likely LCP
+            />
+            {/* <span>Lumii aquarium</span> */}
+          </Link>
 
-        {/* Navigation Links */}
-        <nav className="hidden md:flex space-x-6">
-          <Link href="/" className="hover:text-teal-300">Home</Link>
-          <Link href="/about" className="hover:text-teal-300">About Us</Link>
-          <Link href="/farm" className="hover:text-teal-300">Aquarium</Link>
-          {/* <Link href="#" className="hover:text-teal-300">Features</Link> */}
-          <Link href="/products" className="hover:text-teal-300">Gallery</Link>
-          {/* <Link href="#" className="hover:text-teal-300">Blog</Link> */}
-          <Link href="/contact" className="hover:text-teal-300">Contact</Link>
-        </nav>
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex space-x-6 items-center">
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="hover:text-teal-300 transition-colors">
+                {link.text}
+              </Link>
+            ))}
+          </nav>
 
-        {/* Contact Info */}
-        <div className="hidden md:flex items-center space-x-2">
-          <Phone size={20} className="text-teal-300" />
-          <span>(800) 123 4567</span>
+          {/* Desktop Contact Info */}
+          <div className="hidden md:flex items-center space-x-2">
+            <Phone size={20} className="text-teal-300" />
+            <span>+94 77 123456</span>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
+        </div>
+      </header>
+      
+      {/* 7. Mobile Navigation Menu Overlay */}
+      <div
+        className={`
+          fixed top-0 left-0 w-full h-full bg-[#0D1B2A] text-white z-40
+          transform transition-transform duration-300 ease-in-out
+          ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}
+          md:hidden
+        `}
+      >
+        <div className="container mx-auto flex flex-col items-center justify-center h-full space-y-8">
+          <nav className="flex flex-col items-center space-y-6">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-2xl hover:text-teal-300 transition-colors"
+                onClick={() => setIsMenuOpen(false)} // Close menu on link click
+              >
+                {link.text}
+              </Link>
+            ))}
+          </nav>
+          <div className="flex items-center space-x-2 text-lg">
+            <Phone size={24} className="text-teal-300" />
+            <span>+94 77 123456</span>
+          </div>
         </div>
       </div>
-    </header>
+    </>
   );
 };
 

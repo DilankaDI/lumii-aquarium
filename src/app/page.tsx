@@ -135,12 +135,6 @@
 import { useState, useEffect } from 'react';
 import Header from '@/components/Header'; // Import the new Header component
 
-// Preloader Component
-const Preloader = () => (
-  <div className="fixed inset-0 bg-[#0c0c0c] flex justify-center items-center z-[100]">
-    <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-cyan-500"></div>
-  </div>
-);
 
 // Main Page Component
 const HomePage = () => {
@@ -153,7 +147,6 @@ const HomePage = () => {
 
   return (
     <>
-      {loading && <Preloader />}
       <div className={`transition-opacity duration-1000 ${loading ? 'opacity-0' : 'opacity-100'}`}>
         <Header /> {/* Use the Header component here */}
         <main>

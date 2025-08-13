@@ -134,37 +134,75 @@
 
 // export default GalleryPage;
 
+// src/app/products/page.tsx
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search } from 'lucide-react';
+
+// Data and Type Imports
 import { fishData } from '@/data/fishData';
+import type { Fish } from '@/data/fishData';
+
+// Component Imports
+import { FishModal } from '@/components/FishModal'; // <-- Import the modal component
 
 const categories = [
-  { id: 'all', title: 'Filter - All Species' },
-  { id: 'beginner', title: 'Beginner’s Picks' },
-  { id: 'centerpiece', title: 'Centerpiece Fish' },
-  { id: 'community', title: 'Community Fish' },
+  { id: 'all', name: 'All Species' },
+  { id: 'beginner', name: 'Beginner’s Picks' },
+  { id: 'centerpiece', name: 'Centerpiece Fish' },
+  { id: 'community', name: 'Community Fish' },
 ];
 
 const ITEMS_PER_PAGE = 6;
 
 const GalleryPage = () => {
+  // State for filtering and pagination
   const [activeFilter, setActiveFilter] = useState('all');
   const [filtered, setFiltered] = useState(fishData);
   const [currentPage, setCurrentPage] = useState(1);
 
+  // 1. State to manage the selected fish for the modal
+  const [selectedFish, setSelectedFish] = useState<Fish | null>(null);
+
+  // Effect to update the list when the filter changes
   useEffect(() => {
     if (activeFilter === 'all') {
       setFiltered(fishData);
     } else {
-      setFiltered(fishData.filter(item => item.category === activeFilter));
+      // Assuming your fishData items have a 'tags' array field.
+      // If it's a 'category' string, use: fishData.filter(item => item.category === activeFilter)
+      setFiltered(fishData.filter(item => item.category?.includes(activeFilter)));
     }
-    setCurrentPage(1);
+    setCurrentPage(1); // Reset to the first page on filter change
   }, [activeFilter]);
 
+  // 2. Handlers to open and close the modal
+  const handleOpenModal = (fish: Fish) => {
+    setSelectedFish(fish);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedFish(null);
+  };
+
+  // 3. Effect to lock body scroll when modal is open
+  useEffect(() => {
+    if (selectedFish) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => { // Cleanup function
+      document.body.style.overflow = 'auto';
+    };
+  }, [selectedFish]);
+
+
+  // Pagination logic
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
   const paginatedItems = filtered.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
@@ -172,79 +210,86 @@ const GalleryPage = () => {
   );
 
   return (
-    <div className="bg-gray-50 dark:bg-dark-bg py-16 px-4 md:px-8">
-      <div className="container mx-auto">
+    <>
+      <div className="bg-gray-50 dark:bg-dark-bg py-16 px-4 md:px-8">
+        <div className="container mx-auto">
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveFilter(category.id)}
-              className={`
-                px-6 py-2 text-sm font-semibold border rounded-sm transition-colors duration-300
-                ${activeFilter === category.id
-                  ? 'bg-primary text-white border-primary'
-                  : 'bg-white dark:bg-dark-surface dark:text-gray-300 text-gray-600 border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary'
-                }
-              `}
-            >
-              {category.title}
-            </button>
-          ))}
-        </div>
-
-        {/* Image Grid */}
-        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence mode="popLayout">
-            {paginatedItems.map((item) => (
-              <motion.div
-                layout
-                key={item.id}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.3 }}
-                className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer"
-              >
-                <Image
-                  src={item.primaryImage}
-                  alt={item.name}
-                  width={600}
-                  height={400}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-80 transition-all duration-300 flex flex-col justify-center items-center p-4">
-                  <Search className="h-10 w-10 text-white opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-300" />
-                  <p className="text-white font-bold mt-2 text-center opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100">
-                    {item.name}
-                  </p>
-                </div>
-              </motion.div>
+          {/* Filter Buttons */}
+    <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
+      {categories.map((category) => (
+        <button
+          key={category.id}
+          onClick={() => setActiveFilter(category.id)}
+          className={`
+            px-6 py-2 text-sm font-semibold border rounded-sm transition-colors duration-300
+            ${activeFilter === category.id
+              ? 'bg-primary text-white border-primary'
+              : 'bg-white dark:bg-dark-surface dark:text-gray-300 text-gray-600 border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary'
+            }
+          `}
+        >
+          {category.name}
+        </button>
             ))}
-          </AnimatePresence>
-        </motion.div>
+          </div>
 
-        {/* Pagination Controls */}
-        <div className="flex justify-center mt-12">
-          {totalPages > 1 && Array.from({ length: totalPages }).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentPage(index + 1)}
-              className={`
-                w-10 h-10 mx-1 flex items-center justify-center font-semibold border rounded-sm transition-colors duration-300
-                ${currentPage === index + 1
-                  ? 'bg-primary text-white border-primary'
-                  : 'bg-white dark:bg-dark-surface dark:text-gray-300 text-gray-600 border-gray-200 dark:border-gray-700 hover:bg-primary/80 hover:text-white'
-                }
-              `}
-            >
-              {index + 1}
-            </button>
-          ))}
+          {/* Image Grid */}
+    <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <AnimatePresence mode="popLayout">
+        {paginatedItems.map((item) => (
+          <motion.div
+            layout
+            key={item.id}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3 }}
+            className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer"
+                  onClick={() => handleOpenModal(item)} // <-- 4. ADD ONCLICK HANDLER HERE
+                >
+                  <Image
+                    src={item.primaryImage}
+                    alt={item.name}
+                    width={600}
+                    height={400}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-[#0D1B2A] bg-opacity-0 group-hover:bg-opacity-80 transition-all duration-300 flex flex-col justify-center items-center p-4">
+                    <Search className="h-10 w-10 text-white opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-300" />
+                    <p className="text-white font-bold mt-2 text-center opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100">
+                      {item.name}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+
+          {/* Pagination Controls */}
+          <div className="flex justify-center mt-12">
+            {totalPages > 1 && Array.from({ length: totalPages }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentPage(index + 1)}
+                className={`
+                  w-10 h-10 mx-1 flex items-center justify-center font-semibold border rounded-sm transition-colors duration-300
+                  ${currentPage === index + 1
+                    ? 'bg-[#0D1B2A] text-white border-[#0D1B2A]'
+                    : 'bg-white dark:bg-dark-surface dark:text-gray-300 text-gray-600 border-gray-200 dark:border-gray-700 hover:bg-[#0D1B2A]/80 hover:text-white'
+                  }
+                `}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+      
+      {/* 5. RENDER THE MODAL COMPONENT */}
+      {/* It will only appear on the screen when selectedFish has data */}
+      <FishModal fish={selectedFish} onClose={handleCloseModal} />
+    </>
   );
 };
 

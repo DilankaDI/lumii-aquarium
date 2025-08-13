@@ -1,44 +1,8 @@
 'use client'; // Marks this as a client-side component
 
-import React, { useState } from 'react';
-
-interface FormData {
-  name: string;
-  email: string;
-  message: string;
-}
+import Image from 'next/image';
 
 const ContactUsPage: React.FC = () => {
-  const [messageSent, setMessageSent] = useState<boolean>(false);
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    message: '',
-  });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { id, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [id]: value,
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('Form submitted!', formData);
-
-    setMessageSent(true);
-
-    // Optionally reset form
-    setFormData({ name: '', email: '', message: '' });
-
-    setTimeout(() => {
-      setMessageSent(false);
-    }, 5000);
-  };
 
   return (
     <div className="bg-[#0A0A10] text-gray-200 min-h-screen font-sans">
@@ -57,72 +21,15 @@ const ContactUsPage: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Contact Form Section */}
-          <div className="bg-[#181820] p-8 rounded-xl shadow-2xl">
-            <h2 className="text-3xl font-bold text-white mb-6">Send us a message</h2>
-            {messageSent && (
-              <div className="bg-green-600 text-white p-4 rounded-lg mb-6 text-center transition-all duration-300">
-                Thank you for your message! We will get back to you shortly.
-              </div>
-            )}
-            <form onSubmit={handleSubmit}>
-              <div className="mb-6">
-                <label
-                  htmlFor="name"
-                  className="block text-gray-400 text-sm font-medium mb-2"
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-[#22222B] rounded-lg border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-red-600"
-                  placeholder="Your Name"
-                  required
-                />
-              </div>
-              <div className="mb-6">
-                <label
-                  htmlFor="email"
-                  className="block text-gray-400 text-sm font-medium mb-2"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-[#22222B] rounded-lg border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-red-600"
-                  placeholder="you@example.com"
-                  required
-                />
-              </div>
-              <div className="mb-6">
-                <label
-                  htmlFor="message"
-                  className="block text-gray-400 text-sm font-medium mb-2"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={5}
-                  className="w-full px-4 py-3 bg-[#22222B] rounded-lg border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-red-600"
-                  placeholder="How can we help you?"
-                  required
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300"
-              >
-                Send Message
-              </button>
-            </form>
+          <div className="p-8 rounded-xl">
+                      <Image
+                        src="/images/sample-10.jpg"
+                        alt="Aquatic Farming Facility"
+                        width={1200}
+                        height={600}
+                        className="rounded-3xl shadow-2xl w-full h-auto object-cover"
+                      />     
+
           </div>
 
           {/* Contact Information Section */}

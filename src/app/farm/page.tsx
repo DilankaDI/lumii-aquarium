@@ -13,7 +13,7 @@ const OurFarmsPage = () => {
             Our commitment to sustainable aquaculture ensures the health and well-being of our species, from fry to full growth.
           </p>
           <Image
-            src="/images/sample-8.jpeg"
+            src="/images/catfish.jpg"
             alt="Aquatic Farming Facility"
             width={1200}
             height={600}

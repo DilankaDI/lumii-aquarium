@@ -1,27 +1,29 @@
-// src/components/FishCard.tsx
-
 import Image from 'next/image';
-import Link from 'next/link';
-// This import will now succeed because you added the export in fishData.ts
 import type { Fish } from '@/data/fishData';
-
-export const FishCard = ({ fish }: { fish: Fish }) => {
-  return (
-    // Your JSX for the card component
-    <div className="border rounded-lg overflow-hidden">
-      <Link href={`/products/${fish.id}`}>
-          <Image
-            src={fish.primaryImage}
-            alt={fish.name}
-            width={400}
-            height={300}
-            className="object-cover"
-          />
-          <div className="p-4">
-            <h3 className="font-bold">{fish.name}</h3>
-            <p className="text-sm text-gray-500">{fish.category}</p>
-          </div>
-      </Link>
-    </div>
-  );
+// The card now accepts a function to call when it's clicked
+interface FishCardProps {
+fish: Fish;
+onCardClick: (fish: Fish) => void;
+}
+export const FishCard = ({ fish, onCardClick }: FishCardProps) => {
+return (
+// The <Link> is replaced with a <div> that has an onClick handler.
+<div
+className="border rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer group"
+onClick={() => onCardClick(fish)}
+>
+<div className="relative w-full aspect-[4/3] overflow-hidden">
+<Image
+src={fish.primaryImage}
+alt={fish.name}
+fill
+className="object-cover group-hover:scale-105 transition-transform duration-300"
+/>
+</div>
+<div className="p-4 bg-white">
+<h3 className="font-bold text-lg text-[#0D1B2A]">{fish.name}</h3>
+<p className="text-sm text-gray-500">{fish.category}</p>
+</div>
+</div>
+);
 };
