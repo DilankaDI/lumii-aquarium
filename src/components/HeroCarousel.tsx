@@ -1,281 +1,3 @@
-// // Hero.tsx
-// "use client";
-
-// import { useEffect, useState } from "react";
-// import Image from "next/image";
-// import { motion, AnimatePresence } from "framer-motion";
-
-// const slides = [
-//   {
-//     id: 1,
-//     bg: "/images/bg 1.jpg",
-//     fg: "/images/fg 9.png", // ✅ foreground image
-//     title: "Exotic Fish Varieties",
-//     text: "From vibrant tropicals to rare species, discover healthy fish for your aquarium.",
-//     button: "Contact Us Today!",
-//     cards: [
-//       {
-//         id: "c1",
-//         img: "/images/fg 1.png",
-//         title: "Looking for aquarium specialists?",
-//         text: "We have built our reputation on obsessive attention to detail, passion for aquariums and innovative design.",
-//         button: "Read More",
-//       },
-//       {
-//         id: "c2",
-//         img: "",
-//         title: "Different aquariums for different ideas",
-//         text: "Each fish is cared for with attention, so you can enjoy a thriving, active, and vibrant addition to your tank.",
-//         button: "Contact Details",
-//       },
-//       {
-//         id: "c3",
-//         img: "",
-//         title: "",
-//         text: "",
-//         button: "",
-//         video: true,
-//       },
-//     ],
-//   },
-//   {
-//     id: 2,
-//     bg: "/images/bg 5.jpg",
-//     fg: "/images/fg 10.png", // ✅ foreground image
-//     title: "Luxury Aquarium Design",
-//     text: "Transforming spaces with unique, custom aquariums.",
-//     button: "Discover More",
-//     cards: [
-//       {
-//         id: "c1",
-//         img: "/images/fg 8.png",
-//         title: "Trusted by Fish Lovers",
-//         text: "We focus on quality, health, and care so your aquarium stays lively and beautiful for years.",
-//         button: "See Options",
-//       },
-//       {
-//         id: "c2",
-//         img: "",
-//         title: "Peaceful, Colorful, Alive",
-//         text: "Transform your space with fish that bring calm movements, dazzling colors, and natural charm.",
-//         button: "Learn More",
-//       },
-//       {
-//         id: "c3",
-//         img: "",
-//         title: "",
-//         text: "",
-//         button: "",
-//         video: true,
-//       },
-//     ],
-//   },
-// ];
-
-// export default function Hero() {
-//   const [index, setIndex] = useState(0);
-//   const [firstLoad, setFirstLoad] = useState(true);
-
-//   useEffect(() => {
-//     const firstLoadTimer = setTimeout(() => {
-//       setFirstLoad(false);
-//     }, 4000);
-
-//     const slideTimer = setInterval(() => {
-//       setIndex((prev) => (prev + 1) % slides.length);
-//     }, 8000);
-
-//     return () => {
-//       clearTimeout(firstLoadTimer);
-//       clearInterval(slideTimer);
-//     };
-//   }, []);
-
-//   const slide = slides[index];
-
-//   // Animations
-//   const bgVariants = {
-//     enter: { y: "-100%", opacity: 0 },
-//     center: { y: "0%", opacity: 1 },
-//     exit: { y: "100%", opacity: 0 },
-//   };
-
-//   const fgVariants = {
-//     enter: { y: "-100%", opacity: 0 },
-//     center: { y: "0%", opacity: 1 },
-//     exit: { y: "100%", opacity: 0 },
-//   };
-
-//   const cardVariants = {
-//     hidden: { opacity: 0, y: 40 },
-//     visible: (i: number) => ({
-//       opacity: 1,
-//       y: 0,
-//       transition: { delay: 1 + i * 0.4, duration: 0.6 },
-//     }),
-//     exit: { opacity: 0, y: 40, transition: { duration: 0.6 } },
-//   };
-
-//   const leftVariants = {
-//     hidden: { opacity: 0, x: -40 },
-//     visible: (i: number) => ({
-//       opacity: 1,
-//       x: 0,
-//       transition: { delay: 1.5 + i * 0.3, duration: 0.7 },
-//     }),
-//     stay: { opacity: 1, x: 0 },
-//   };
-
-//   return (
-//     <div className="relative w-full h-screen overflow-hidden">
-//       {/* Background */}
-//       <AnimatePresence mode="wait">
-//         <motion.div
-//           key={`bg-${slide.id}`}
-//           className="absolute inset-0"
-//           variants={bgVariants}
-//           initial="enter"
-//           animate="center"
-//           exit="exit"
-//           transition={{ duration: 1.5, ease: "easeInOut" }}
-//         >
-//           <Image
-//             src={slide.bg}
-//             alt="Aquarium background"
-//             fill
-//             className="object-cover"
-//             priority
-//           />
-//           {/* Zoom overlay */}
-//           <motion.div
-//             className="absolute inset-0 bg-black/70"
-//             initial={{ scale: 1 }}
-//             animate={{ scale: 1.1 }}
-//             transition={{ duration: 8, ease: "linear" }}
-//           />
-//         </motion.div>
-//       </AnimatePresence>
-
-//       {/* Foreground image ✅ */}
-//       <AnimatePresence mode="wait">
-//         {slide.fg && (
-//           <motion.div
-//             key={`fg-${slide.id}`}
-//             className="absolute inset-0 flex items-center justify-center"
-//             variants={fgVariants}
-//             initial="enter"
-//             animate="center"
-//             exit="exit"
-//             transition={{ duration: 1.5, ease: "easeInOut" }}
-//           >
-//             <Image
-//               src={slide.fg}
-//               alt="Aquarium foreground"
-//               width={500}
-//               height={250}
-//               className="object-contain pointer-events-none"
-//               priority
-//             />
-//           </motion.div>
-//         )}
-//       </AnimatePresence>
-
-//       <div className="relative z-10 flex items-center justify-between h-full px-12">
-//         {/* Left Side (Scene 2) */}
-//         <div className="text-white max-w-lg">
-//           {[slide.title, slide.text, slide.button].map((item, i) => (
-//             <motion.div
-//               key={`${slide.id}-${i}`}
-//               variants={leftVariants}
-//               initial="hidden"
-//               animate={firstLoad ? "visible" : "stay"}
-//               custom={i}
-//               className="mb-4"
-//             >
-//               {i === 0 && <h1 className="text-5xl font-bold">{item}</h1>}
-//               {i === 1 && <p className="text-lg mt-4">{item}</p>}
-//               {i === 2 && (
-//                 <button className="px-6 py-3 bg-teal-600 rounded-lg shadow-lg font-semibold mt-4">
-//                   {item}
-//                 </button>
-//               )}
-//             </motion.div>
-//           ))}
-//         </div>
-
-//         {/* Right Side (Scene 1 Cards) */}
-//         <div className="grid grid-rows-2 gap-6 w-[480px] h-[400px]">
-//           <AnimatePresence mode="wait">
-//             <motion.div
-//               key={`${slide.id}-c1`}
-//               variants={cardVariants}
-//               initial="hidden"
-//               animate="visible"
-//               exit="exit"
-//               custom={0}
-//               className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-xl flex items-center space-x-4 text-black"
-//             >
-//               <Image
-//                 src={slide.cards[0].img}
-//                 alt={slide.cards[0].title}
-//                 width={96}
-//                 height={96}
-//                 className="object-contain"
-//               />
-//               <div>
-//                 <h3 className="font-bold text-lg mb-2 text-black">{slide.cards[0].title}</h3>
-//                 <p className="text-gray-600 text-sm mb-3">{slide.cards[0].text}</p>
-//                 <button className="text-white bg-teal-600 px-4 py-2 rounded">
-//                   {slide.cards[0].button}
-//                 </button>
-//               </div>
-//             </motion.div>
-//           </AnimatePresence>
-
-//           <div className="grid grid-cols-2 gap-6">
-//             <AnimatePresence mode="wait">
-//               <motion.div
-//                 key={`${slide.id}-c2`}
-//                 variants={cardVariants}
-//                 initial="hidden"
-//                 animate="visible"
-//                 exit="exit"
-//                 custom={1}
-//                 className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-xl"
-//               >
-//                 <h3 className="font-bold text-lg mb-2 text-black">{slide.cards[1].title}</h3>
-//                 <p className="text-gray-600 mb-3">{slide.cards[1].text}</p>
-//                 <button className="text-white bg-teal-600 px-4 py-2 rounded">
-//                   {slide.cards[1].button}
-//                 </button>
-//               </motion.div>
-//             </AnimatePresence>
-
-//             <AnimatePresence mode="wait">
-//               <motion.div
-//                 key={`${slide.id}-c3`}
-//                 variants={cardVariants}
-//                 initial="hidden"
-//                 animate="visible"
-//                 exit="exit"
-//                 custom={2}
-//                 className="bg-teal-600/80 backdrop-blur-sm rounded-xl shadow-xl flex items-center justify-center"
-//               >
-//                 {slide.cards[2].video && (
-//                   <button className="w-16 h-16 rounded-full bg-white/30 hover:bg-white/50 transition-colors flex items-center justify-center">
-//                     <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1"></div>
-//                   </button>
-//                 )}
-//               </motion.div>
-//             </AnimatePresence>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// Hero.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -298,7 +20,7 @@ const slides = [
         img: "/images/fg 1.png",
         title: "Looking for aquarium specialists?",
         text: "Each fish is cared for with attention, so you can enjoy a thriving, active, and vibrant addition to your tank.",
-        button: "Contect Us Now!",
+        button: "Contact Us Now!",
          href: "/contact",
       },
       {
@@ -437,13 +159,15 @@ export default function Hero() {
 
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between h-full px-6 md:px-12 gap-8">
         {/* Left text */}
-        <div className="text-white max-w-lg text-center md:text-left">
+        <div className="text-white max-w-lg text-center md:text-left mt-16 md:mt-10">
           {[slide.title, slide.text, slide.button].map((item, i) => (
             <motion.div
               key={`${slide.id}-${i}`}
               variants={leftVariants}
-              initial="hidden"
-              animate={firstLoad ? "visible" : "stay"}
+              // initial="hidden"
+              initial={firstLoad ? "hidden" : "false"}   // only animate first time
+              animate={firstLoad ? "visible" : "stay"}  // stay static afterwards
+              // animate={firstLoad ? "visible" : "stay"}
               custom={i}
               className="mb-4"
             >
@@ -539,3 +263,4 @@ export default function Hero() {
     </div>
   );
 }
+
