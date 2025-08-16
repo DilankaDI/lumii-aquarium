@@ -1,163 +1,541 @@
-// 'use client';
+// // Hero.tsx
+// "use client";
 
-// import React from 'react';
-// import useEmblaCarousel from 'embla-carousel-react';
-// import Autoplay from 'embla-carousel-autoplay';
-// import Link from 'next/link';
-// import Image from 'next/image'; // <-- 1. Import the correct component
+// import { useEffect, useState } from "react";
+// import Image from "next/image";
+// import { motion, AnimatePresence } from "framer-motion";
 
-// // Your slide data remains the same
 // const slides = [
 //   {
-//     title: "Vibrant & Healthy",
-//     subtitle: "Clownfish",
-//     image: "/images/sample-08.jpeg",
-//     link: "/species/clownfish",
-//     buttonText: "View Details"
+//     id: 1,
+//     bg: "/images/bg 1.jpg",
+//     fg: "/images/fg 9.png", // ✅ foreground image
+//     title: "Exotic Fish Varieties",
+//     text: "From vibrant tropicals to rare species, discover healthy fish for your aquarium.",
+//     button: "Contact Us Today!",
+//     cards: [
+//       {
+//         id: "c1",
+//         img: "/images/fg 1.png",
+//         title: "Looking for aquarium specialists?",
+//         text: "We have built our reputation on obsessive attention to detail, passion for aquariums and innovative design.",
+//         button: "Read More",
+//       },
+//       {
+//         id: "c2",
+//         img: "",
+//         title: "Different aquariums for different ideas",
+//         text: "Each fish is cared for with attention, so you can enjoy a thriving, active, and vibrant addition to your tank.",
+//         button: "Contact Details",
+//       },
+//       {
+//         id: "c3",
+//         img: "",
+//         title: "",
+//         text: "",
+//         button: "",
+//         video: true,
+//       },
+//     ],
 //   },
 //   {
-//     title: "Stunning Centerpiece",
-//     subtitle: "Blue Tang",
-//     image: "/images/sample-10.jpg",
-//     link: "/species/blue-tang",
-//     buttonText: "View Details"
-//   },
-//   {
-//     title: "Our Commitment to",
-//     subtitle: "Quality",
-//     image: "/images/sample-11.jpg",
-//     link: "/farm",
-//     buttonText: "Learn More"
+//     id: 2,
+//     bg: "/images/bg 5.jpg",
+//     fg: "/images/fg 10.png", // ✅ foreground image
+//     title: "Luxury Aquarium Design",
+//     text: "Transforming spaces with unique, custom aquariums.",
+//     button: "Discover More",
+//     cards: [
+//       {
+//         id: "c1",
+//         img: "/images/fg 8.png",
+//         title: "Trusted by Fish Lovers",
+//         text: "We focus on quality, health, and care so your aquarium stays lively and beautiful for years.",
+//         button: "See Options",
+//       },
+//       {
+//         id: "c2",
+//         img: "",
+//         title: "Peaceful, Colorful, Alive",
+//         text: "Transform your space with fish that bring calm movements, dazzling colors, and natural charm.",
+//         button: "Learn More",
+//       },
+//       {
+//         id: "c3",
+//         img: "",
+//         title: "",
+//         text: "",
+//         button: "",
+//         video: true,
+//       },
+//     ],
 //   },
 // ];
 
-// export const HeroCarousel = () => {
-//   const [emblaRef] = useEmblaCarousel(
-//     { loop: true, align: 'start' },
-//     [Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })]
-//   );
+// export default function Hero() {
+//   const [index, setIndex] = useState(0);
+//   const [firstLoad, setFirstLoad] = useState(true);
+
+//   useEffect(() => {
+//     const firstLoadTimer = setTimeout(() => {
+//       setFirstLoad(false);
+//     }, 4000);
+
+//     const slideTimer = setInterval(() => {
+//       setIndex((prev) => (prev + 1) % slides.length);
+//     }, 8000);
+
+//     return () => {
+//       clearTimeout(firstLoadTimer);
+//       clearInterval(slideTimer);
+//     };
+//   }, []);
+
+//   const slide = slides[index];
+
+//   // Animations
+//   const bgVariants = {
+//     enter: { y: "-100%", opacity: 0 },
+//     center: { y: "0%", opacity: 1 },
+//     exit: { y: "100%", opacity: 0 },
+//   };
+
+//   const fgVariants = {
+//     enter: { y: "-100%", opacity: 0 },
+//     center: { y: "0%", opacity: 1 },
+//     exit: { y: "100%", opacity: 0 },
+//   };
+
+//   const cardVariants = {
+//     hidden: { opacity: 0, y: 40 },
+//     visible: (i: number) => ({
+//       opacity: 1,
+//       y: 0,
+//       transition: { delay: 1 + i * 0.4, duration: 0.6 },
+//     }),
+//     exit: { opacity: 0, y: 40, transition: { duration: 0.6 } },
+//   };
+
+//   const leftVariants = {
+//     hidden: { opacity: 0, x: -40 },
+//     visible: (i: number) => ({
+//       opacity: 1,
+//       x: 0,
+//       transition: { delay: 1.5 + i * 0.3, duration: 0.7 },
+//     }),
+//     stay: { opacity: 1, x: 0 },
+//   };
 
 //   return (
-//     // The main container for the panel + gradient architecture
-//     <div className="relative p-4 md:p-8">
-//       <div className="relative overflow-hidden rounded-3xl">
-//         <div className="absolute inset-0 bg-gradient-to-r from-white dark:from-dark-bg via-neutral-100 dark:via-dark-surface to-neutral-100 dark:to-dark-surface"></div>
-//         <div className="overflow-hidden relative" ref={emblaRef}>
-//           <div className="flex">
-//             {slides.map((slide, index) => (
-//               <div className="min-h-[70vh] flex-[0_0_100%] flex items-center" key={index}>
-//                 <div className="flex w-full max-w-7xl mx-auto items-center justify-between px-6 md:px-12">
-//                   <div className="flex flex-col items-start w-full md:w-1/2">
-//                     <p className="text-lg font-light text-primary">{slide.title}</p>
-//                     <h1 className="text-5xl md:text-7xl font-bold leading-tight mt-2 
-//                                  bg-gradient-to-r from-gray-900 via-gray-600 to-gray-900
-//                                  dark:from-white dark:via-gray-400 dark:to-white 
-//                                  bg-clip-text text-transparent"
-//                     >
-//                       {slide.subtitle}
-//                     </h1>
-//                     <Link 
-//                       href={slide.link} 
-//                       className="mt-8 inline-block bg-gradient-to-r from-primary to-accent hover:opacity-90 text-white font-bold py-3 px-8 rounded-full transition-opacity"
-//                     >
-//                       {slide.buttonText}
-//                     </Link>
-//                   </div>
-//                   <div className="hidden md:flex w-1/2 justify-center items-center relative h-96">
-                    
-//                     {/* 2. THIS IS THE FIX: Replaced `<img>` with `<Image />` */}
-//                     <Image
-//                       src={slide.image} 
-//                       alt={slide.subtitle} 
-//                       fill
-//                       style={{ objectFit: 'contain' }}
-//                       className="drop-shadow-[0_10px_20px_rgba(0,0,0,0.25)]"
-//                     />
+//     <div className="relative w-full h-screen overflow-hidden">
+//       {/* Background */}
+//       <AnimatePresence mode="wait">
+//         <motion.div
+//           key={`bg-${slide.id}`}
+//           className="absolute inset-0"
+//           variants={bgVariants}
+//           initial="enter"
+//           animate="center"
+//           exit="exit"
+//           transition={{ duration: 1.5, ease: "easeInOut" }}
+//         >
+//           <Image
+//             src={slide.bg}
+//             alt="Aquarium background"
+//             fill
+//             className="object-cover"
+//             priority
+//           />
+//           {/* Zoom overlay */}
+//           <motion.div
+//             className="absolute inset-0 bg-black/70"
+//             initial={{ scale: 1 }}
+//             animate={{ scale: 1.1 }}
+//             transition={{ duration: 8, ease: "linear" }}
+//           />
+//         </motion.div>
+//       </AnimatePresence>
 
-//                   </div>
-//                 </div>
+//       {/* Foreground image ✅ */}
+//       <AnimatePresence mode="wait">
+//         {slide.fg && (
+//           <motion.div
+//             key={`fg-${slide.id}`}
+//             className="absolute inset-0 flex items-center justify-center"
+//             variants={fgVariants}
+//             initial="enter"
+//             animate="center"
+//             exit="exit"
+//             transition={{ duration: 1.5, ease: "easeInOut" }}
+//           >
+//             <Image
+//               src={slide.fg}
+//               alt="Aquarium foreground"
+//               width={500}
+//               height={250}
+//               className="object-contain pointer-events-none"
+//               priority
+//             />
+//           </motion.div>
+//         )}
+//       </AnimatePresence>
+
+//       <div className="relative z-10 flex items-center justify-between h-full px-12">
+//         {/* Left Side (Scene 2) */}
+//         <div className="text-white max-w-lg">
+//           {[slide.title, slide.text, slide.button].map((item, i) => (
+//             <motion.div
+//               key={`${slide.id}-${i}`}
+//               variants={leftVariants}
+//               initial="hidden"
+//               animate={firstLoad ? "visible" : "stay"}
+//               custom={i}
+//               className="mb-4"
+//             >
+//               {i === 0 && <h1 className="text-5xl font-bold">{item}</h1>}
+//               {i === 1 && <p className="text-lg mt-4">{item}</p>}
+//               {i === 2 && (
+//                 <button className="px-6 py-3 bg-teal-600 rounded-lg shadow-lg font-semibold mt-4">
+//                   {item}
+//                 </button>
+//               )}
+//             </motion.div>
+//           ))}
+//         </div>
+
+//         {/* Right Side (Scene 1 Cards) */}
+//         <div className="grid grid-rows-2 gap-6 w-[480px] h-[400px]">
+//           <AnimatePresence mode="wait">
+//             <motion.div
+//               key={`${slide.id}-c1`}
+//               variants={cardVariants}
+//               initial="hidden"
+//               animate="visible"
+//               exit="exit"
+//               custom={0}
+//               className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-xl flex items-center space-x-4 text-black"
+//             >
+//               <Image
+//                 src={slide.cards[0].img}
+//                 alt={slide.cards[0].title}
+//                 width={96}
+//                 height={96}
+//                 className="object-contain"
+//               />
+//               <div>
+//                 <h3 className="font-bold text-lg mb-2 text-black">{slide.cards[0].title}</h3>
+//                 <p className="text-gray-600 text-sm mb-3">{slide.cards[0].text}</p>
+//                 <button className="text-white bg-teal-600 px-4 py-2 rounded">
+//                   {slide.cards[0].button}
+//                 </button>
 //               </div>
-//             ))}
+//             </motion.div>
+//           </AnimatePresence>
+
+//           <div className="grid grid-cols-2 gap-6">
+//             <AnimatePresence mode="wait">
+//               <motion.div
+//                 key={`${slide.id}-c2`}
+//                 variants={cardVariants}
+//                 initial="hidden"
+//                 animate="visible"
+//                 exit="exit"
+//                 custom={1}
+//                 className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-xl"
+//               >
+//                 <h3 className="font-bold text-lg mb-2 text-black">{slide.cards[1].title}</h3>
+//                 <p className="text-gray-600 mb-3">{slide.cards[1].text}</p>
+//                 <button className="text-white bg-teal-600 px-4 py-2 rounded">
+//                   {slide.cards[1].button}
+//                 </button>
+//               </motion.div>
+//             </AnimatePresence>
+
+//             <AnimatePresence mode="wait">
+//               <motion.div
+//                 key={`${slide.id}-c3`}
+//                 variants={cardVariants}
+//                 initial="hidden"
+//                 animate="visible"
+//                 exit="exit"
+//                 custom={2}
+//                 className="bg-teal-600/80 backdrop-blur-sm rounded-xl shadow-xl flex items-center justify-center"
+//               >
+//                 {slide.cards[2].video && (
+//                   <button className="w-16 h-16 rounded-full bg-white/30 hover:bg-white/50 transition-colors flex items-center justify-center">
+//                     <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1"></div>
+//                   </button>
+//                 )}
+//               </motion.div>
+//             </AnimatePresence>
 //           </div>
 //         </div>
 //       </div>
 //     </div>
 //   );
-// };
+// }
 
-// src/components/HeroCarousel.js
-// src/components/HeroCarousel.js
-'use client';
+// Hero.tsx
+"use client";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import Image from 'next/image';
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link"; 
+import { motion, AnimatePresence } from "framer-motion";
 
-const HeroCarousel = () => {
+const slides = [
+  {
+    id: 1,
+    bg: "/images/bg 1.jpg",
+    fg: "/images/fg 9.png", // ✅ foreground image
+    title: "All cared for with love",
+    text: "From vibrant tropicals to rare species, discover healthy fish for your aquarium.",
+    button: "View Collection",
+     href: "/products",
+    cards: [
+      {
+        id: "c1",
+        img: "/images/fg 1.png",
+        title: "Looking for aquarium specialists?",
+        text: "Each fish is cared for with attention, so you can enjoy a thriving, active, and vibrant addition to your tank.",
+        button: "Contect Us Now!",
+         href: "/contact",
+      },
+      {
+        id: "c2",
+        img: "",
+        title: "Natural Care",
+        text: "Our fish grow in natural-like freshwater for health and vibrancy.",
+        button: "Who We Are",
+        href: "/about",
+      },
+      {
+        id: "c3",
+        img: "",
+        title: "",
+        text: "",
+        button: "",
+        video: true,
+      },
+    ],
+  },
+  {
+    id: 2,
+    bg: "/images/bg 5.jpg",
+    fg: "/images/fg 10.png", // ✅ foreground image
+    title: "All cared for with love",
+    text: "From vibrant tropicals to rare species, discover healthy fish for your aquarium.",
+    button: "View Collection",
+    href: "/products",
+    cards: [
+      {
+        id: "c1",
+        img: "/images/fg 6.png",
+        title: "Trusted by Fish Lovers",
+        text: "We focus on the highest standards of quality, health, and attentive care, ensuring that every fish in your aquarium thrives, bringing vibrant colors, lively activity, and lasting beauty for years to come.",
+        button: "Know More...",
+        href: "/about",
+      },
+      {
+        id: "c2",
+        img: "",
+        title: "Peaceful, Colorful, Alive",
+        text: "We raise and care for fish with love so you can enjoy a thriving aquarium.",
+        button: "Reach Out",
+        href: "/contact",
+      },
+      {
+        id: "c3",
+        img: "",
+        title: "",
+        text: "",
+        button: "",
+        video: true,
+      },
+    ],
+  },
+];
+
+export default function Hero() {
+  const [index, setIndex] = useState(0);
+  const [firstLoad, setFirstLoad] = useState(true);
+
+  useEffect(() => {
+    const firstLoadTimer = setTimeout(() => setFirstLoad(false), 4000);
+    const slideTimer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % slides.length);
+    }, 8000);
+
+    return () => {
+      clearTimeout(firstLoadTimer);
+      clearInterval(slideTimer);
+    };
+  }, []);
+
+  const slide = slides[index];
+
+  // Animations (same as your code)
+  const bgVariants = { enter: { y: "-100%", opacity: 0 }, center: { y: "0%", opacity: 1 }, exit: { y: "100%", opacity: 0 } };
+  const fgVariants = { enter: { y: "-100%", opacity: 0 }, center: { y: "0%", opacity: 1 }, exit: { y: "100%", opacity: 0 } };
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: 1 + i * 0.3, duration: 0.5 } }),
+    exit: { opacity: 0, y: 40, transition: { duration: 0.5 } },
+  };
+  const leftVariants = {
+    hidden: { opacity: 0, x: -40 },
+    visible: (i: number) => ({ opacity: 1, x: 0, transition: { delay: 1.2 + i * 0.2, duration: 0.6 } }),
+    stay: { opacity: 1, x: 0 },
+  };
+
   return (
-    <div className="absolute top-0 left-0 w-full h-full -z-10">
-      <Swiper
-        modules={[Autoplay]}
-        loop={true}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
-        speed={1000}
-        slidesPerView={1}
-      >
-        {/* Slide 1 */}
-        <SwiperSlide>
-          <div className="h-screen">
+    <div className="relative w-full h-screen overflow-hidden">
+      {/* Background */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={`bg-${slide.id}`}
+          className="absolute inset-0"
+          variants={bgVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+        >
+          <Image src={slide.bg} alt="Aquarium background" fill className="object-cover" priority />
+          <motion.div
+            className="absolute inset-0 bg-black/70"
+            initial={{ scale: 1 }}
+            animate={{ scale: 1.1 }}
+            transition={{ duration: 8, ease: "linear" }}
+          />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Foreground */}
+      <AnimatePresence mode="wait">
+        {slide.fg && (
+          <motion.div
+            key={`fg-${slide.id}`}
+            className="absolute inset-0 flex items-center justify-center"
+            variants={fgVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+          >
             <Image
-              src="/images/sample-8.jpeg"
-              alt="Beautiful aquarium installation"
+              src={slide.fg}
+              alt="Aquarium foreground"
+              width={400}
+              height={200}
+              className="object-contain pointer-events-none"
               priority
-              fill
-              style={{ objectFit: 'cover' }}
-              sizes="100vw"
             />
-                    <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-          </div>
-        </SwiperSlide>
+      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between h-full px-6 md:px-12 gap-8">
+        {/* Left text */}
+        <div className="text-white max-w-lg text-center md:text-left">
+          {[slide.title, slide.text, slide.button].map((item, i) => (
+            <motion.div
+              key={`${slide.id}-${i}`}
+              variants={leftVariants}
+              initial="hidden"
+              animate={firstLoad ? "visible" : "stay"}
+              custom={i}
+              className="mb-4"
+            >
+              {i === 0 && <h1 className="text-3xl md:text-5xl font-bold">{item}</h1>}
+              {i === 1 && <p className="text-base md:text-lg mt-4 font-serif text-gray-300">{item}</p>}
+              {i === 2 && slide.href && (
+                <Link
+                  href={slide.href}
+                  className="inline-block px-4 md:px-6 py-2 md:py-3 bg-teal-600 rounded-lg shadow-lg font-semibold mt-4 text-sm md:text-base"
+                >
+                  {item}
+                </Link>
+              )}
+            </motion.div>
+          ))}
+        </div>
 
-        {/* Slide 2 */}
-        <SwiperSlide>
-          <div className="h-screen">
-            <Image
-              src="/images/sample-11.jpg"
-              alt="Vibrant fish in a well-maintained aquarium"
-              fill
-              style={{ objectFit: 'cover' }}
-              sizes="100vw"
-            />
-                    <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+        {/* Right cards */}
+<div className="grid grid-cols-1 md:grid-rows-2 md:grid-cols-1 gap-4 md:gap-6 w-full max-w-md">
+  <AnimatePresence mode="wait">
+    <motion.div
+      key={`${slide.id}-c1`}
+      variants={cardVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      custom={0}
+      className="bg-white/95 backdrop-blur-sm p-4 md:p-6 rounded-xl shadow-lg flex items-center space-x-3 text-black"
+    >
+      {slide.cards[0].img && (
+        <Image src={slide.cards[0].img} alt={slide.cards[0].title} width={72} height={72} className="object-contain" />
+      )}
+      <div>
+        <h3 className="font-serif font-bold text-sm md:text-base mb-1 text-black">{slide.cards[0].title}</h3>
+        <p className="font-serif font-light text-xs md:text-sm text-gray-600 mb-2">{slide.cards[0].text}</p>
+        {slide.cards[0].href && (
+                  <Link
+                    href={slide.cards[0].href}
+                    className="inline-block text-white bg-teal-600 px-3 py-1.5 md:px-4 md:py-2 rounded text-xs md:text-sm"
+                  >
+                    {slide.cards[0].button}
+                  </Link>
+                )}
+      </div>
+    </motion.div>
+  </AnimatePresence>
 
-          </div>
-        </SwiperSlide>
+  <div className="grid grid-cols-2 gap-4">
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={`${slide.id}-c2`}
+        variants={cardVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        custom={1}
+        className="bg-white/95 backdrop-blur-sm p-4 md:p-6 rounded-xl shadow-lg"
+      >
+        <h3 className="font-serif font-bold text-sm md:text-base mb-1 text-black">{slide.cards[1].title}</h3>
+        <p className="font-serif font-light text-xs md:text-sm text-gray-600 mb-2">{slide.cards[1].text}</p>
+        {slide.cards[1].href && (
+                  <Link
+                    href={slide.cards[1].href}
+                    className="inline-block text-white bg-teal-600 px-3 py-1.5 md:px-4 md:py-2 rounded text-xs md:text-sm"
+                  >
+                    {slide.cards[1].button}
+                  </Link>
+                )}
+      </motion.div>
+    </AnimatePresence>
 
-        {/* Slide 3 */}
-        <SwiperSlide>
-          <div className="h-screen">
-            <Image
-              src="/images/sample-15.jpeg"
-              alt="A clean and healthy aquarium ecosystem"
-              fill
-              style={{ objectFit: 'cover' }}
-              sizes="100vw"
-            />
-        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
-            
-          </div>
-        </SwiperSlide>
-      </Swiper>
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={`${slide.id}-c3`}
+        variants={cardVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        custom={2}
+        className="bg-teal-600/80 backdrop-blur-sm rounded-xl shadow-lg flex items-center justify-center"
+      >
+        {slide.cards[2].video && (
+          <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/30 hover:bg-white/50 transition-colors flex items-center justify-center">
+            <div className="w-0 h-0 border-t-6 md:border-t-8 border-t-transparent border-l-10 md:border-l-12 border-l-white border-b-6 md:border-b-8 border-b-transparent ml-1"></div>
+          </button>
+        )}
+      </motion.div>
+    </AnimatePresence>
+  </div>
+</div>
 
-      {/* Dark overlay */}
-      
+      </div>
     </div>
   );
-};
-
-export default HeroCarousel;
+}

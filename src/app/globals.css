@@ -30,15 +30,14 @@ body {
 @tailwind components;
 @tailwind utilities;
 
-body {
+/* body {
   background-color: #0c0c0c;
 }
 
 .hero-bg {
-  /* This image of cardinal tetras is very similar to the one in your screenshot */
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/images/sample-8.jpeg');
   
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
+} */

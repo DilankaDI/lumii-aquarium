@@ -135,7 +135,9 @@
 import { useState, useEffect } from 'react';
 import Header from '@/components/Header'; // Import the new Header component
 import HeroCarousel from '@/components/HeroCarousel'; 
-import Link from "next/link";
+//import Link from "next/link";
+import Image from 'next/image';
+
 
 // Main Page Component
 const HomePage = () => {
@@ -154,28 +156,37 @@ const HomePage = () => {
           {/* Hero Section */}
           <section className="h-screen w-full flex items-center">
             <HeroCarousel /> 
-            <div className="container mx-auto px-6 relative z-10"> 
-              <div className="text-left text-white max-w-2xl">
-                <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-                  Aquarium Installation and Maintenance
-                </h1>
-                <p className="mt-4 text-xl md:text-2xl text-gray-200">
-                  Fastest and easiest way to cycle your new aquarium.
-                 </p>
-                  <div className="mt-8 inline-block bg-cyan-500 text-white font-bold py-4 px-10 rounded hover:bg-cyan-600 transition-colors duration-300">
-                    <Link href="/products" className="hover:text-white transition-colors duration-300">
-                      CONTACT US TODAY
-                    </Link>
-                </div>
-              </div>
-            </div>
           </section>
 
           {/* Other Sections */}
           <section className="py-20 bg-[#0c0c0c]">
-             <div className="container mx-auto text-center">
-                <h2 className="text-4xl text-white">Other Content Goes Here</h2>
-             </div>
+<h2 className="text-4xl font-bold text-white mb-4 text-center">Welcome to Lumii Aquarium</h2>
+
+                            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 my-24">
+                              <div className="lg:w-1/2">
+                                
+                                <p className="text-lg text-gray-300 mb-4">
+Where ornamental fish are naturally raised and globally delivered. 
+Each fish begins its life in clean, naturally flowing freshwater, growing in calm, 
+stress-free conditions that mirror its native environment. 
+Raised without artificial interference, the fish remain peaceful, healthy, and disease-free.                                
+</p>
+                                <p className="text-lg text-gray-300">
+Natural growth preserves their youthful energy, vibrant colors, and gentle temperament. 
+Before export, every fish undergoes weekly health inspections and a 30-day quarantine, 
+ensuring only the finest are prepared for international delivery.                               
+</p>
+                              </div>
+                              <div className="lg:w-1/2">
+                                <Image
+                                  src="/images/catfish.jpg"
+                                  alt="Our Story"
+                                  width={600}
+                                  height={400}
+                                  className="rounded-xl shadow-lg w-full h-auto object-cover"
+                                />
+                              </div>
+                            </div>
           </section>
         </main>
       </div>

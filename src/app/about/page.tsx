@@ -12,7 +12,8 @@ const AboutUsPage = () => {
           <div className="flex-1 text-center lg:text-left">
             <h1 className="text-5xl font-bold text-white mb-4">About Us</h1>
             <p className="text-xl max-w-lg mx-auto lg:mx-0">
-              Our company and culture are a lot like our product. They&#39;re crafted, not cobbled, for a delightful experience.
+              At Lumii Aquarium, we raise healthy, vibrant fish in natural freshwater environments. 
+              Our careful care and weekly health checks ensure every fish arrives lively and ready for your aquarium.
             </p>
           </div>
           <Image
@@ -29,7 +30,7 @@ const AboutUsPage = () => {
         <section className="flex flex-col-reverse lg:flex-row items-center gap-8 border-b border-gray-700 pb-12">
           <div className="flex-1">
             <Image
-              src="/images/catfish.jpg"
+              src="/images/sample-14.jpg"
               alt="Our Mission"
               width={600}
               height={400}
@@ -39,11 +40,12 @@ const AboutUsPage = () => {
           </div>
           <div className="flex-1 text-center lg:text-left">
             <h2 className="text-4xl font-bold text-white mb-4">
-              Our Mission: Helping Millions of Organizations Grow Better
+              Our Mission
             </h2>
             <p className="text-lg">
-              We believe not just in growing bigger, but in growing better. And growing better means aligning the success of your own business with the success of your customers, win-win!
-            </p>
+At Lumii Aquarium, our mission is to provide aquarists worldwide with healthy, naturally raised ornamental fish. 
+We focus on creating stress-free, clean freshwater environments that mirror each species natural habitat. 
+By prioritizing fish health, vibrant colors, and gentle behavior, we help aquarium enthusiasts enjoy thriving, beautiful tanks for years.            </p>
           </div>
         </section>
 
@@ -52,15 +54,17 @@ const AboutUsPage = () => {
           <div className="flex-1 text-center lg:text-left">
             <h2 className="text-4xl font-bold text-white mb-4">Our Story</h2>
             <p className="text-lg mb-4">
-              In 2004, two MIT graduate students, Brian Halligan and Dharmesh Shah, noticed a major shift in the way people shop and purchase products. Buyers didn’t want to be interrupted by ads; they wanted helpful information. In 2006, they founded our company to give businesses the tools to grow better with inbound marketing.
-            </p>
+Lumii Aquarium began with a deep passion for aquatics and a dedication to providing high-quality, healthy ornamental fish. 
+From the very beginning, we focused on creating calm, clean freshwater environments that mimic each species&#39; natural habitat, 
+ensuring they grow peaceful, vibrant, and disease-free.            </p>
             <p className="text-lg">
-              Along the way, our company expanded beyond marketing into a crafted, not cobbled, suite of products that create the frictionless customer experience that buyers expect today. Expertly led by the CEO, Yamini Rangan, we use a customer platform built on an AI-powered smart CRM to help millions of growing organizations grow better.
-            </p>
+Over the years, we have grown into a trusted name for aquarists worldwide. 
+Every fish undergoes weekly health checks and a 30-day quarantine before delivery, so our customers receive only the finest specimens, 
+ready to thrive in their aquariums.            </p>
           </div>
           <div className="flex-1">
             <Image
-              src="/images/catfish.jpg"
+              src="/images/betta-fish.jpg"
               alt="Our Story"
               width={600}
               height={400}
