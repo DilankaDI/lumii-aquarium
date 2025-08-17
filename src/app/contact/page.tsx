@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 const ContactUsPage: React.FC = () => {
   return (
-    <div className="bg-[#0A0A10] text-gray-200 min-h-screen font-sans">
+    <div className="bg-[#0A0A10] text-gray-200 min-h-screen font-serif">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
         <div className="text-center mb-16">

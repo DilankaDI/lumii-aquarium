@@ -113,7 +113,7 @@ export default function Hero() {
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* Background */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="sync">
         <motion.div
           key={`bg-${slide.id}`}
           className="absolute inset-0"
@@ -134,7 +134,7 @@ export default function Hero() {
       </AnimatePresence>
 
       {/* Foreground */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="sync">
         {slide.fg && (
           <motion.div
             key={`fg-${slide.id}`}
@@ -159,7 +159,7 @@ export default function Hero() {
 
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between h-full px-6 md:px-12 gap-8">
         {/* Left text */}
-        <div className="text-white max-w-lg text-center md:text-left mt-16 md:mt-10">
+        <div className="text-white font-serif max-w-lg text-center md:text-left mt-16 md:mt-10">
           {[slide.title, slide.text, slide.button].map((item, i) => (
             <motion.div
               key={`${slide.id}-${i}`}

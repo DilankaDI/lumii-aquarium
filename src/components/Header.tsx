@@ -61,7 +61,7 @@ const Header = () => {
       {/* 6. Conditionally apply classes for the background and shadow */}
       <header
         className={`
-          fixed top-0 left-0 w-full text-white py-4 px-8 z-50 
+          fixed top-0 left-0 w-full text-white font-serif py-4 px-8 z-50 
           transition-all duration-300
           ${isScrolled ? 'bg-[#0D1B2A] shadow-lg' : 'bg-[#0D1B2A]/30 shadow-none'}
         `}
@@ -116,7 +116,7 @@ const Header = () => {
       {/* 7. Mobile Navigation Menu Overlay */}
       <div
         className={`
-          fixed top-0 left-0 w-full h-full bg-[#0D1B2A] text-white z-40
+          fixed top-0 left-0 w-full h-full bg-[#0D1B2A] text-white font-serif z-40
           transform transition-transform duration-300 ease-in-out
           ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}
           md:hidden

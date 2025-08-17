@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#12121A] text-gray-400 py-12 px-4 md:px-8 font-sans">
+    <footer className="bg-[#12121A] text-gray-400 py-12 px-4 md:px-8 font-serif">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
         
         {/* Left Section - Logo and Description */}

@@ -53,7 +53,7 @@ const Counter = ({ target, duration = 2000 }: { target: number; duration?: numbe
 // Our Farms page component with a new layout
 const OurFarmsPage = () => {
   return (
-    <div className="bg-[#0A0A10] text-gray-200 min-h-screen font-sans">
+    <div className="bg-[#0A0A10] text-gray-200 min-h-screen font-serif">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         
         {/* Hero Section */}

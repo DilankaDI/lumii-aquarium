@@ -4,7 +4,7 @@ import { FaTiktok } from 'react-icons/fa'; // Added TikTok icon
 
 const AboutUsPage = () => { 
   return (
-    <div className="bg-[#0A0A10] text-gray-200 min-h-screen font-sans">
+    <div className="bg-[#0A0A10] text-gray-200 min-h-screen font-serif">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
         
         {/* About Us */}
@@ -130,7 +130,7 @@ export default AboutUsPage;
 
 //   return (
 //     <>
-//     <div className="bg-dark text-gray-200 min-h-screen font-sans transition-opacity duration-1000 opacity-100">
+//     <div className="bg-dark text-gray-200 min-h-screen font-serif transition-opacity duration-1000 opacity-100">
 
 
 //       <main>

@@ -160,7 +160,7 @@ const HomePage = () => {
 
           {/* Other Sections */}
           <section className="py-20 bg-[#0c0c0c]">
-              <h2 className="text-4xl font-bold text-white mb-4 text-center">Welcome to Lumii Aquarium</h2>
+              <h2 className="text-4xl font-bold font-serif text-white mb-4 text-center">Welcome to Lumii Aquarium</h2>
 
                             <div className="flex flex-col px-4 sm:px-6 lg:flex-row items-center gap-12 lg:gap-24 my-24">
                               <div className="lg:w-1/2">
