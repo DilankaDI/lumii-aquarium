@@ -1,48 +1,86 @@
-import Image from 'next/image';
+'use client';
 
+import Image from 'next/image';
+import { useEffect, useState, useRef  } from "react";
+
+// Counter component with scroll-triggered animation
+const Counter = ({ target, duration = 2000 }: { target: number; duration?: number }) => {
+  const [count, setCount] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasStarted) {
+            setHasStarted(true);
+          }
+        });
+      },
+      { threshold: 0.4 } // trigger when 40% visible
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, [hasStarted]);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    let start = 0;
+    const increment = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        start = target;
+        clearInterval(timer);
+      }
+      setCount(Math.floor(start));
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [hasStarted, target, duration]);
+
+  return (
+    <div ref={ref}>
+      <span>{count.toLocaleString()}</span>
+    </div>
+  );
+};
 // Our Farms page component with a new layout
 const OurFarmsPage = () => {
   return (
     <div className="bg-[#0A0A10] text-gray-200 min-h-screen font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-6xl font-extrabold text-white mb-4 leading-tight">Our Aquatic Farms</h1>
-          <p className="text-2xl text-gray-400 max-w-3xl mx-auto mb-12">
-            Our commitment to sustainable aquaculture ensures the health and well-being of our species, from fry to full growth.
-          </p>
-          <Image
-            src="/images/catfish.jpg"
-            alt="Aquatic Farming Facility"
-            width={1200}
-            height={600}
-            className="rounded-3xl shadow-2xl w-full h-auto object-cover"
-          />
-        </div>
-
-        {/* Our Story Section - Staggered Layout */}
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 my-24">
-          <div className="lg:w-1/2">
-            <h2 className="text-4xl font-bold text-white mb-4">Our Story: From Fry to Tank</h2>
-            <p className="text-lg text-gray-300 mb-4">
-              Our journey began with a passion for aquatic life and a vision for ethical breeding. We developed a unique system to raise fish in a controlled, natural environment, focusing on their health and genetic diversity.
-            </p>
-            <p className="text-lg text-gray-300">
-              We started with a single facility and have since expanded to multiple locations, each one dedicated to specialized care for different species, ensuring a thriving and beautiful collection for our customers.
-            </p>
-          </div>
-          <div className="lg:w-1/2">
+        <div className="relative text-center mb-20">
+          <div className="relative h-[70vh] w-full rounded-3xl overflow-hidden shadow-2xl">
             <Image
               src="/images/catfish.jpg"
-              alt="Our Story"
-              width={600}
-              height={400}
-              className="rounded-xl shadow-lg w-full h-auto object-cover"
+              alt="Aquatic Farming Facility"
+              fill
+              priority
+              className="object-cover"
             />
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-black bg-opacity-60" />
+
+            {/* Hero Content */}
+            <div className="relative z-10 flex flex-col items-center justify-center h-full px-4">
+              <h1 className="text-6xl font-extrabold text-white mb-6 leading-tight">
+                Our Aquatic Farms
+              </h1>
+              <p className="text-2xl text-gray-300 max-w-3xl mx-auto">
+                Our commitment to sustainable aquaculture ensures the health and
+                well-being of our species, from fry to full growth.
+              </p>
+            </div>
           </div>
         </div>
-        
         {/* Meet Our Facilities Section */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-white mb-16">Meet Our Breeding Facilities</h2>
@@ -108,20 +146,28 @@ const OurFarmsPage = () => {
           </div>
         </div>
 
-        {/* By the Numbers Section */}
+         {/* By the Numbers Section */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-white mb-8">By the Numbers</h2>
           <div className="flex flex-col sm:flex-row justify-center space-y-8 sm:space-y-0 sm:space-x-8">
             <div className="flex-1 bg-[#22222B] p-6 rounded-lg shadow-lg">
-              <h3 className="text-5xl font-bold text-white">100+</h3>
+              <h3 className="text-5xl font-bold text-cyan-400">
+                <Counter target={100} />+
+              </h3>
               <p className="text-lg text-gray-400 mt-2">Species Bred</p>
             </div>
             <div className="flex-1 bg-[#22222B] p-6 rounded-lg shadow-lg">
-              <h3 className="text-5xl font-bold text-white">50,000+</h3>
-              <p className="text-lg text-gray-400 mt-2">Gallons of Water Capacity</p>
+              <h3 className="text-5xl font-bold text-cyan-400">
+                <Counter target={50000} />+
+              </h3>
+              <p className="text-lg text-gray-400 mt-2">
+                Gallons of Water Capacity
+              </p>
             </div>
             <div className="flex-1 bg-[#22222B] p-6 rounded-lg shadow-lg">
-              <h3 className="text-5xl font-bold text-white">10+</h3>
+              <h3 className="text-5xl font-bold text-cyan-400">
+                <Counter target={10} />+
+              </h3>
               <p className="text-lg text-gray-400 mt-2">Breeding Experts</p>
             </div>
           </div>
