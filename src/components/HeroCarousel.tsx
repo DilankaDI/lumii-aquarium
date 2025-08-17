@@ -159,31 +159,41 @@ export default function Hero() {
 
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between h-full px-6 md:px-12 gap-8">
         {/* Left text */}
-        <div className="text-white font-serif max-w-lg text-center md:text-left mt-16 md:mt-10">
-          {[slide.title, slide.text, slide.button].map((item, i) => (
-            <motion.div
-              key={`${slide.id}-${i}`}
-              variants={leftVariants}
-              // initial="hidden"
-              initial={firstLoad ? "hidden" : "false"}   // only animate first time
-              animate={firstLoad ? "visible" : "stay"}  // stay static afterwards
-              // animate={firstLoad ? "visible" : "stay"}
-              custom={i}
-              className="mb-4"
-            >
-              {i === 0 && <h1 className="text-3xl md:text-5xl font-bold">{item}</h1>}
-              {i === 1 && <p className="text-base md:text-lg mt-4 font-serif text-gray-300">{item}</p>}
-              {i === 2 && slide.href && (
-                <Link
-                  href={slide.href}
-                  className="inline-block px-4 md:px-6 py-2 md:py-3 bg-teal-600 rounded-lg shadow-lg font-semibold mt-4 text-sm md:text-base"
-                >
-                  {item}
-                </Link>
-              )}
-            </motion.div>
-          ))}
-        </div>
+<div className="text-white max-w-lg text-center md:text-left mt-16 md:mt-10">
+  {[slide.title, slide.text, slide.button].map((item, i) => (
+    <motion.div
+      key={`${slide.id}-${i}`}
+      variants={leftVariants}
+      initial={firstLoad ? "hidden" : "false"}   // only animate first time
+      animate={firstLoad ? "visible" : "stay"}  // stay static afterwards
+      custom={i}
+      className="mb-4"
+    >
+      { i === 0 && (
+  <h1
+    className="text-3xl md:text-5xl font-bold"
+    style={{ fontFamily: 'Montserrat, sans-serif' }} 
+  >
+    {item}
+  </h1>
+)}
+      {i === 1 && (
+        <p className="text-base md:text-lg mt-4 font-serif text-gray-300">
+          {item}
+        </p>
+      )}
+      {i === 2 && slide.href && (
+        <Link
+          href={slide.href}
+          className="inline-block px-4 md:px-6 py-2 md:py-3 bg-teal-600 rounded-lg shadow-lg font-semibold mt-4 text-sm md:text-base"
+        >
+          {item}
+        </Link>
+      )}
+    </motion.div>
+  ))}
+</div>
+
 
         {/* Right cards */}
 <div className="grid grid-cols-1 md:grid-rows-2 md:grid-cols-1 gap-4 md:gap-6 w-full max-w-md">

@@ -211,7 +211,7 @@ const GalleryPage = () => {
 
   return (
     <>
-      <div className="bg-gray-50 dark:bg-dark-bg py-16 px-4 md:px-8">
+      <div className="bg-gray-50 font-serif dark:bg-dark-bg py-16 px-4 md:px-8">
         <div className="container mx-auto">
 
           {/* Filter Buttons */}

@@ -36,7 +36,7 @@ export const FishModal = ({ fish, onClose }: FishModalProps) => {
   return (
     <div
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 overflow-auto transition-opacity duration-300 animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center font-serif bg-black/70 p-4 overflow-auto transition-opacity duration-300 animate-fadeIn"
     >
       <div
         onClick={(e) => e.stopPropagation()}

@@ -9,7 +9,7 @@ export const FishCard = ({ fish, onCardClick }: FishCardProps) => {
 return (
 // The <Link> is replaced with a <div> that has an onClick handler.
 <div
-className="border rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer group"
+className="border rounded-lg overflow-hidden font-serif shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer group"
 onClick={() => onCardClick(fish)}
 >
 <div className="relative w-full aspect-[4/3] overflow-hidden">
