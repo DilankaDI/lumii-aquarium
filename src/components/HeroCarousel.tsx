@@ -169,14 +169,21 @@ export default function Hero() {
       custom={i}
       className="mb-4"
     >
-      { i === 0 && (
+{ i === 0 && (
   <h1
-    className="text-3xl md:text-5xl font-bold"
-    style={{ fontFamily: 'Montserrat, sans-serif' }} 
+    className="
+      font-bold 
+      text-white 
+      leading-[27px] text-[25px]  /* mobile */
+      md:leading-[54px] md:text-[49px] /* desktop */
+      whitespace-nowrap
+    "
+    style={{ fontFamily: 'Montserrat, sans-serif' }}
   >
     {item}
-  </h1>
+  </h1>
 )}
+
       {i === 1 && (
         <p className="text-base md:text-lg mt-4 font-serif text-gray-300">
           {item}
