@@ -160,22 +160,22 @@ const HomePage = () => {
 
           {/* Other Sections */}
           <section className="py-20 bg-[#0c0c0c]">
-<h2 className="text-4xl font-bold text-white mb-4 text-center">Welcome to Lumii Aquarium</h2>
+              <h2 className="text-4xl font-bold text-white mb-4 text-center">Welcome to Lumii Aquarium</h2>
 
-                            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 my-24">
+                            <div className="flex flex-col px-4 sm:px-6 lg:flex-row items-center gap-12 lg:gap-24 my-24">
                               <div className="lg:w-1/2">
                                 
                                 <p className="text-lg text-gray-300 mb-4">
-Where ornamental fish are naturally raised and globally delivered. 
-Each fish begins its life in clean, naturally flowing freshwater, growing in calm, 
-stress-free conditions that mirror its native environment. 
-Raised without artificial interference, the fish remain peaceful, healthy, and disease-free.                                
-</p>
+                                Where ornamental fish are naturally raised and globally delivered. 
+                                Each fish begins its life in clean, naturally flowing freshwater, growing in calm, 
+                                stress-free conditions that mirror its native environment. 
+                                Raised without artificial interference, the fish remain peaceful, healthy, and disease-free.                                
+                                </p>
                                 <p className="text-lg text-gray-300">
-Natural growth preserves their youthful energy, vibrant colors, and gentle temperament. 
-Before export, every fish undergoes weekly health inspections and a 30-day quarantine, 
-ensuring only the finest are prepared for international delivery.                               
-</p>
+                                Natural growth preserves their youthful energy, vibrant colors, and gentle temperament. 
+                                Before export, every fish undergoes weekly health inspections and a 30-day quarantine, 
+                                ensuring only the finest are prepared for international delivery.                               
+                                </p>
                               </div>
                               <div className="lg:w-1/2">
                                 <Image
