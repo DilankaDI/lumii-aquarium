@@ -99,11 +99,11 @@ export default function Hero() {
   // Animations (same as your code)
   const bgVariants = { enter: { y: "-100%", opacity: 0 }, center: { y: "0%", opacity: 1 }, exit: { y: "100%", opacity: 0 } };
   const fgVariants = { enter: { y: "-100%", opacity: 0 }, center: { y: "0%", opacity: 1 }, exit: { y: "100%", opacity: 0 } };
-  const cardVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: 1 + i * 0.3, duration: 0.5 } }),
-    exit: { opacity: 0, y: 40, transition: { duration: 0.5 } },
-  };
+  // const cardVariants = {
+  //   hidden: { opacity: 0, y: 40 },
+  //   visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: 1 + i * 0.3, duration: 0.5 } }),
+  //   exit: { opacity: 0, y: 40, transition: { duration: 0.5 } },
+  // };
   const leftVariants = {
     hidden: { opacity: 0, x: -40 },
     visible: (i: number) => ({ opacity: 1, x: 0, transition: { delay: 1.2 + i * 0.2, duration: 0.6 } }),
@@ -203,7 +203,7 @@ export default function Hero() {
 
 
         {/* Right cards */}
-<div className="grid grid-cols-1 md:grid-rows-2 md:grid-cols-1 gap-4 md:gap-6 w-full max-w-md">
+{/* <div className="grid grid-cols-1 md:grid-rows-2 md:grid-cols-1 gap-4 md:gap-6 w-full max-w-md">
   <AnimatePresence mode="wait">
     <motion.div
       key={`${slide.id}-c1`}
@@ -274,7 +274,7 @@ export default function Hero() {
       </motion.div>
     </AnimatePresence>
   </div>
-</div>
+</div> */}
 
       </div>
     </div>

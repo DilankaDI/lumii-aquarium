@@ -115,7 +115,7 @@ export const fishData: Fish[] = [
       {
     id: 13,
     name: 'Malawi Cichlid',
-    primaryImage: '/images/Fish/Malawi cichlid.jpg',
+    primaryImage: '/images/Fish/Malawi Cichlid.jpg',
     category: 'Glow',
     species: 'fish',
     description: 'Brightly colored African cichlids from Lake Malawi. They are territorial, active, and need rocky aquascapes with plenty of space.'
