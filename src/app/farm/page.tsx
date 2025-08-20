@@ -72,12 +72,16 @@ const OurFarmsPage = () => {
             {/* Hero Content */}
             <div className="relative z-10 flex flex-col items-center justify-center h-full px-4">
               <h1 className="text-6xl font-extrabold text-white mb-6 leading-tight">
-                Our Aquatic Farms
+                Our Farms
               </h1>
-              <p className="text-2xl text-gray-300 max-w-3xl mx-auto">
-                Our commitment to sustainable aquaculture ensures the health and
-                well-being of our species, from fry to full growth.
-              </p>
+              {/* <p className="text-2xl text-gray-300 max-w-3xl mx-auto">
+                At Lumii Farm, every fish begins its journey in a carefully managed freshwater environment. 
+                Our breeding facilities are designed to provide the right balance of natural water, nutrition, 
+                and care, ensuring that fish grow strong, calm, and disease-free. From the earliest stages of life, 
+                we monitor their progress closely, paying attention to water quality, feeding, and overall well-being. 
+                This approach allows each species to mature within the right timeframe, maintaining health and beauty from 
+                young fish to adulthood.
+              </p> */}
             </div>
           </div>
         </div>
@@ -89,18 +93,22 @@ const OurFarmsPage = () => {
           <div className="flex flex-col lg:flex-row items-center gap-8 mb-16">
             <div className="lg:w-1/2">
               <Image
-                src="/images/catfish.jpg"
+                src="/images/farm/1.jpg"
                 alt="Willow Creek Farm"
-                width={800}
-                height={600}
+                width={600}
+                height={400}
                 className="rounded-xl shadow-lg w-full h-auto object-cover"
               />
             </div>
             <div className="lg:w-1/2 text-center lg:text-left">
-              <h3 className="text-3xl font-bold text-white mb-2">The Willow Creek Farm</h3>
-              <p className="text-gray-400 mb-4">Location: Northern California</p>
+              <h3 className="text-3xl font-bold text-white mb-2">Breeding and Care</h3>
+              {/* <p className="text-gray-400 mb-4">Location: Northern California</p> */}
               <p className="text-lg text-gray-300">
-                Specializing in cold-water species, this facility uses filtered mountain stream water to replicate a natural habitat. Our experts ensure every fish is healthy and vibrant.
+At Lumii Farm, every fish begins its journey in a carefully managed freshwater environment. 
+Our breeding facilities are designed to provide the right balance of natural water, nutrition, and care, 
+ensuring that fish grow strong, calm, and disease-free. From the earliest stages of life, we monitor their 
+progress closely, paying attention to water quality, feeding, and overall well-being. This approach allows 
+each species to mature within the right timeframe, maintaining health and beauty from young fish to adulthood.
               </p>
             </div>
           </div>
@@ -108,18 +116,22 @@ const OurFarmsPage = () => {
           {/* Facility 2 */}
           <div className="flex flex-col-reverse lg:flex-row items-center gap-8 mb-16">
             <div className="lg:w-1/2 text-center lg:text-right">
-              <h3 className="text-3xl font-bold text-white mb-2">The Coral Reef Nursery</h3>
-              <p className="text-gray-400 mb-4">Location: Florida Keys</p>
+              <h3 className="text-3xl font-bold text-white mb-2">Community Engagement</h3>
+              {/* <p className="text-gray-400 mb-4">Location: Florida Keys</p> */}
               <p className="text-lg text-gray-300">
-                Our dedicated marine facility, focused on breeding vibrant tropical fish and propagating rare corals in a controlled environment with state-of-the-art life support systems.
+In addition to breeding at our own facilities, Lumii works closely with selected households who raise fish 
+for us under natural conditions. We provide fishlings to these communities and conduct monthly inspections 
+to ensure proper care, water quality, and healthy growth. Priority is always given to families with natural 
+water sources such as springs and rivers, where fish can thrive in a healthy environment. By working together, 
+we create opportunities for local communities while maintaining strict standards of quality for our customers.
               </p>
             </div>
             <div className="lg:w-1/2">
               <Image
-                src="/images/catfish.jpg"
+                src="/images/farm/2.jpg"
                 alt="Coral Reef Nursery"
-                width={800}
-                height={600}
+                width={500}
+                height={350}
                 className="rounded-xl shadow-lg w-full h-auto object-cover"
               />
             </div>
@@ -129,7 +141,7 @@ const OurFarmsPage = () => {
           <div className="flex flex-col lg:flex-row items-center gap-8">
             <div className="lg:w-1/2">
               <Image
-                src="/images/catfish.jpg"
+                src="/images/farm/3.jpg"
                 alt="Urban Aquaculture Lab"
                 width={800}
                 height={600}
@@ -137,13 +149,51 @@ const OurFarmsPage = () => {
               />
             </div>
             <div className="lg:w-1/2 text-center lg:text-left">
-              <h3 className="text-3xl font-bold text-white mb-2">Urban Aquaculture Lab</h3>
-              <p className="text-gray-400 mb-4">Location: New York</p>
+              <h3 className="text-3xl font-bold text-white mb-2">Quarantine and Health Assurance</h3>
+              {/* <p className="text-gray-400 mb-4">Location: New York</p> */}
               <p className="text-lg text-gray-300">
-                Our innovative lab focuses on cutting-edge techniques for breeding rare freshwater species in a city environment. We push the boundaries of aquaculture science.
+Before export, all fish pass through our dedicated quarantine center for a minimum of three weeks. 
+During this period, they are carefully observed to ensure they are free from disease, growing to the 
+right maturity, and maintaining calm behavior. Our quarantine process reflects our commitment to 
+international standards, giving customers confidence that every fish is healthy and ready for its new environment. 
+This step is central to our promise of delivering only the best.
+              </p>
+<h3 className="text-3xl font-bold text-white mb-2">Export and Global Standards</h3>
+              {/* <p className="text-gray-400 mb-4">Location: Florida Keys</p> */}
+              <p className="text-lg text-gray-300">
+Once quarantine is complete, fish are carefully prepared for shipment using professional handling and packing techniques
+ that safeguard their health throughout transport. Each order is selected, packed, and certified to meet international 
+ requirements, ensuring safe delivery to our customers worldwide. At Lumii, we are committed not only to quality but 
+ also to customer confidence. If any fish fail to survive during the journey, we do not hesitate to replace or provide 
+ them again, ensuring that our customers always receive what they expect. This assurance reflects our dedication to reliability, 
+ professionalism, and long-term trust.
               </p>
             </div>
           </div>
+                    {/* Facility 4 */}
+           {/* <div className="flex flex-col-reverse lg:flex-row items-center gap-8 mb-16">
+            <div className="lg:w-1/2 text-center lg:text-right">
+              <h3 className="text-3xl font-bold text-white mb-2">Export and Global Standards</h3> */}
+              {/* <p className="text-gray-400 mb-4">Location: Florida Keys</p> */}
+              {/* <p className="text-lg text-gray-300">
+Once quarantine is complete, fish are carefully prepared for shipment using professional handling and packing techniques
+ that safeguard their health throughout transport. Each order is selected, packed, and certified to meet international 
+ requirements, ensuring safe delivery to our customers worldwide. At Lumii, we are committed not only to quality but 
+ also to customer confidence. If any fish fail to survive during the journey, we do not hesitate to replace or provide 
+ them again, ensuring that our customers always receive what they expect. This assurance reflects our dedication to reliability, 
+ professionalism, and long-term trust.
+              </p> */}
+            {/* </div>
+            <div className="lg:w-1/2">
+              <Image
+                src="/images/catfish.jpg"
+                alt="Coral Reef Nursery"
+                width={800}
+                height={600}
+                className="rounded-xl shadow-lg w-full h-auto object-cover"
+              />
+            </div>
+          </div> */}
         </div>
 
          {/* By the Numbers Section */}

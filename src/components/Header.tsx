@@ -51,7 +51,7 @@ const Header = () => {
   const navLinks = [
     { href: '/', text: 'Home' },
     { href: '/about', text: 'About Us' },
-    { href: '/farm', text: 'Aquarium' },
+    { href: '/farm', text: 'Our Farms' },
     { href: '/products', text: 'Our Collection' },
     { href: '/contact', text: 'Contact' },
   ];

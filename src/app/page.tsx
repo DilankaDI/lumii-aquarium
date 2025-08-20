@@ -166,15 +166,15 @@ const HomePage = () => {
                               <div className="lg:w-1/2">
                                 
                                 <p className="text-lg text-gray-300 mb-4">
-                                Where ornamental fish are naturally raised and globally delivered. 
-                                Each fish begins its life in clean, naturally flowing freshwater, growing in calm, 
-                                stress-free conditions that mirror its native environment. 
-                                Raised without artificial interference, the fish remain peaceful, healthy, and disease-free.                                
+                                Welcome to Lumii Aquarium
+                                At Lumii, we open the door to a vibrant world of freshwater ornamental fish, carefully bred and nurtured in clean, natural environments. 
+                                Our commitment goes beyond simply raising fish—we ensure every species grows in healthy conditions with the right balance of nutrition, 
+                                water quality, and care.                              
                                 </p>
                                 <p className="text-lg text-gray-300">
-                                Natural growth preserves their youthful energy, vibrant colors, and gentle temperament. 
-                                Before export, every fish undergoes weekly health inspections and a 30-day quarantine, 
-                                ensuring only the finest are prepared for international delivery.                               
+                                By maintaining strict standards for growth, health, and temperament, 
+                                we deliver fish that are not only beautiful but also calm, strong, and disease-free. 
+                                Whether you seek dazzling tropicals or rare varieties, Lumii Aquarium is where quality begins and elegance finds its way into your aquarium.                           
                                 </p>
                               </div>
                               <div className="lg:w-1/2">

@@ -61,10 +61,10 @@ const Footer = () => {
           </div>
 
           {/* Phone */}
-          <div className="flex items-center justify-center md:justify-start space-x-2">
+          {/* <div className="flex items-center justify-center md:justify-start space-x-2">
             <Phone className="h-5 w-5 text-cyan-400" />
             <p className="text-sm">+94 77 123456</p>
-          </div>
+          </div> */}
 
           {/* Email */}
           <div className="flex items-center justify-center md:justify-start space-x-2">

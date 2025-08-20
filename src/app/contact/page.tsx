@@ -13,8 +13,9 @@ const ContactUsPage: React.FC = () => {
             Get in Touch
           </h1>
           <p className="text-2xl text-gray-400 max-w-3xl mx-auto">
-            We love to hear from you. Whether you have a question about our species, 
-            a partnership inquiry, or just want to say hello, feel free to reach out.
+            We are here to support our partners and clients worldwide. Whether you are interested in importing our freshwater 
+            ornamental fish, exploring a long-term partnership, or have specific inquiries about export arrangements, 
+            we welcome your message. Reach out today—we look forward to connecting with you.
           </p>
         </div>
 
@@ -53,7 +54,7 @@ const ContactUsPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start">
+                {/* <div className="flex items-start">
                   <div className="flex-shrink-0 w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center mr-4">
                     <Phone className="h-4 w-4 text-white" />
                   </div>
@@ -66,7 +67,7 @@ const ContactUsPage: React.FC = () => {
                       +94 77 123 4567
                     </a>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="flex items-start">
                   <div className="flex-shrink-0 w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center mr-4">
